@@ -1,0 +1,774 @@
+@font-face{
+	font-family: hiromisake;
+	src: url(HIROMISAKE.ttf);
+	font-family: viking;
+	src: url(PR-Viking.ttf);
+	font-family: Rye-Regular;
+	src: url(Rye-Regular.ttf);
+
+}
+body{
+	background-color: #010101;
+	color: #fff;
+	font-family: sans-serif;
+	-webkit-user-select: none;
+}
+.Encabezado{
+	display: flex;
+	margin: auto;
+	background-color: #111111;
+	padding: 3px;
+	border-radius: 10px;
+}
+.Encabezado2{
+	display: flex;
+	margin: auto;
+	background-color: #58f;
+	padding: 3px;
+	border-radius: 10px;
+}
+.Encabezado h2{
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 50px;
+	display: inline-block;
+}
+.Encabezado p{
+	margin-top: auto;
+	margin-bottom: auto;
+	justify-content: center;
+	text-align: left;
+	display: inline-block;
+	font-size: 21px; 
+}
+.Encabezado .cancelar{
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 50px;
+	height: 50px;
+	display: inline-block;
+	text-align: center;
+	float: right;
+	font-size: 20px;
+	border-radius: 8px;
+	border:none;
+	cursor: pointer;
+	background: #fe0606;
+	color: #fff;
+}
+.Encabezado .cancelar:active{
+	background: #000;
+}
+h1{	
+	display: inline-block;
+	font-size: 67px;
+	text-shadow: #000 -4px 0 8px;
+	font-weight: normal;
+	font-family: Rye-Regular;
+	text-align: center;
+	margin-top: -7px;
+	margin-bottom: -7px;
+	padding: 0px;
+	float: right;
+	margin left: 80px;
+	margin-right: auto;
+	color: #fe8819;
+}
+.divStock{
+	display: flex;
+}
+.divStock label{
+margin-left: 5px;
+width: 98px;
+height: 46px;
+background: #000;
+border-radius: 5px;
+border:none;
+}
+.divStock label input{
+	margin: auto;
+	text-align: center;
+	background: none;
+	border:none;
+	outline: none;
+	font-size: 15px;
+	width: 80%;
+	color: #f8a845;
+}
+.divStock label input::-webkit-inner-spin-button, 
+.divStock label input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.Contenedor{
+	border-radius: 10px;
+	display: flex;
+	height: 120px;
+	margin-top: 5px;
+	justify-content: center;
+	align-items: center;
+	background-color: #111111;
+}
+
+.Contenedor a{
+	background-color: #000;
+	padding: 3px;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	color: #eee;
+	text-decoration: none;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin:4px;
+	border-radius: 8px;
+	height: 70px;
+	width: 140px;
+}
+.Contenedor span{
+	margin: auto;
+}
+.Contenedor a:hover{	
+	text-align: center;
+	font-size: 19px;
+	text-decoration: blink;
+	margin:4px;
+	color: #e90;
+	border-radius: 10px;
+	height: 95px;
+	width: 140px;
+	transition: all .15s ease-in-out;
+}
+
+
+
+
+.general .nav-items, .general .complementos{
+	display: none;
+}
+#milanesas .nav-items,
+#lomitos .nav-items,
+#hamburguesas .nav-items,
+#pizzas .nav-items,
+#papas .nav-items,
+#platos .nav-items,
+#empanadas .nav-items,
+#bebidas .nav-items{
+	display: inline-block;
+	border-left: solid 5px #111111;
+	margin-top: 25px;
+	padding: 8px;
+	border-radius: 10px;
+	width: 90%;
+}
+
+
+.menus .nav-items button{
+	list-style: none;
+	justify-content: center;
+	align-items: center;
+	text-align: left;
+	background-color: #101010;
+	color: #fff;
+	border:none;
+	width: 90%;
+	border-radius: 0px  8px 4px 0px;
+	margin: auto;
+	padding: 2px;
+	padding-left: 8px;
+	margin-bottom: 4px;
+	font-size: 22px;
+	cursor: pointer;
+}
+
+.menus .nav-items button:focus{
+	background: #313131;
+}
+.nav-items button:hover{
+	background-color: #191919;
+}
+
+
+#pizzas .nav-items button{
+	width: 48%;	
+	font-size: 16px;
+}
+
+
+.elementos{
+	display: inline-block;
+	width: 33%;
+	vertical-align: top;
+	margin-top: 3px;
+	margin-right: 20px;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.complementos{
+	display: inline-block;
+	margin-top: 25px;
+	padding: 8px;
+	border-radius: 10px;
+}
+
+.complementos label{
+	margin-bottom: 2px;
+}
+.general .agregar{
+	display: inline;
+	float: right;
+	vertical-align: top;
+	color: #000;
+	border:none;
+	margin: auto;
+	margin-top:12px;
+	margin-bottom:12px;
+	margin-right: 9px;
+	text-align: center;
+	justify-content: center;
+	font-size: 59px;
+	border-radius: 50px;
+	cursor: pointer;
+}
+.aggregations input[type=checkbox],.complementos label input[type=checkbox]{
+	display: none;
+}
+.aggregations .agg:before,.complementos label label:before{
+	content: "";
+	border: 2.5px solid #404040;
+	border-radius: 10px;
+	height: 20px;
+	width: 20px;
+	margin-right: 2px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.aggregations input[type=checkbox] + label,.complementos label input[type=checkbox] + label{
+	cursor: pointer;
+}
+.aggregations input[type=checkbox]:checked + label:before,.complementos label input[type=checkbox]:checked + label:before{
+	content: "✔";
+	justify-content: center;
+	text-align: center;
+	color: #000;
+	font-size: 19px;
+	background: #fe7911;
+}
+.aggregations{
+	display: inline-block;
+	float: right;
+	width: 17%;
+}
+.aggregations .agg{
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 2px;
+	justify-content: center;
+	float: right;
+}
+.agregadoPapas,.agregadoQueso,.agregadoJamon,.agregadoHuevo{
+	padding: 5px;
+	display: block;
+	margin: auto;
+	align-content: center;
+	text-align: left;
+	justify-content: center;
+	background: #111;
+	border-radius: 10px; 
+	font-size: 15px;
+}
+.papasCantidad,.huevoCantidad{
+width: 30px;
+height: 20px;
+text-align: center;
+float: right;
+font-size: 18px;
+border-radius: 3px;
+}
+.agregar{
+	height: 73px;
+	width: 73px;
+	display: inline-block;
+	vertical-align: top;
+	color: #000;
+	border:none;
+	text-align: center;
+	justify-content: center;
+	font-size: 59px;
+	border-radius: 50px;
+	background-color: #ea7912;
+	cursor: pointer;
+}
+
+.agregar:active{
+	background-color: #ffb122;
+}
+
+.contAgreg{
+	display: inline-block;
+}
+.contAgreg .agregar{
+	margin-top: 5px;
+}
+.carrito1{
+	width: 31%;
+	height: 290px;
+	color: #fff;
+	float: right;
+	margin-top: 5px;
+	vertical-align: top;
+	box-shadow:  6px -4px 5px -3px #ea7912;
+}
+
+.tableOrder{
+	width: 99%;
+	display: block;
+	margin: auto;
+	height: 300px;
+	overflow-y: scroll;
+	justify-content: center;
+}
+.tableOrder::-webkit-scrollbar{
+    display: none;
+}
+.celdatableOrder{
+	background: #050505;
+	width: 98%;
+	justify-content: center;
+	display: flex;
+	margin:auto;
+	margin-top: 2.5px;
+}
+.celdaBoton{
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	vertical-align: middle;
+	text-align: center;
+	background: #121212;
+	color: #e8a84a;
+	font-size: 19px;
+	text-align: center;
+	align-items: center;
+	border-radius: 20px;
+
+}
+.celdaCantidad{
+	width: 7%;
+	text-align: center;
+}
+.celdaComida{
+	width: 62%;
+	text-align: left;
+}
+.celdaPrecio{
+	width: 16%;
+	color: #55feae;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	text-align: left;
+}
+.carrito .enviar{
+	width:  auto;
+	padding: 10px;
+	display: inline-block;
+	color: #000;
+	text-align: center;
+	justify-content: center;
+	font-size: 20px;
+	border-radius: 19px;
+	border:none;
+	background-color: #ea7912;
+	cursor: pointer;
+}
+.carrito i{
+	justify-content: center;
+	text-align: center;
+	display: block;
+	vertical-align: middle;
+}
+
+.carrito .cliente{
+	width:  195px;
+	padding: 2px;
+	display: inline-block;
+	color: #fff;
+	text-align: left;
+	padding-left: 5px;
+	font-size: 26px;
+	justify-content: center;
+	border:none;
+	background-color: #111;
+	cursor: pointer;
+}
+.carrito .enviar:active{
+	background-color: #ffb122;
+}
+
+
+.pedidoEdit{
+	width:  195px;
+	padding: 2px;
+	display: inline-block;
+	color: #000;
+	text-align: left;
+	padding-left: 5px;
+	font-size: 20px;
+	justify-content: center;
+	border-radius: 8px;
+	border:none;
+	margin: 10px;
+	background-color: #fff;
+	cursor: pointer;
+	position: relative;
+}
+.importeOutput{
+	border-radius: 10px;
+	display: inline-block;
+	width: 20%;;
+	margin-top: 5px;
+	height: 2px;
+	justify-content: center;
+	text-align: center;
+	background: #121212;
+	color: #55feae;
+	font-size: 19px;
+	text-align: center;
+}
+
+
+
+.navegador{
+	display: inline-block;
+	margin: 10px;
+	float: right;
+}
+.navegador a{
+	padding: 8px;
+	color: #fff;
+	font-size: 20px;
+	text-align: right;
+	text-decoration-line: none;
+}
+.navegador a:active{
+	color: #999;
+}
+.navegador a:hover{
+	text-shadow: #999 0px 0 8px;
+}
+.table2 th,.table2 td{
+	box-shadow:  -2px 2px 6px -3px #ea7912;
+}
+.table1{
+	border-right: none;
+	height: 440px;
+	overflow-y: scroll;
+}
+
+.table1 .celDetalles::-webkit-scrollbar,.table1::-webkit-scrollbar,.repartoClients2::-webkit-scrollbar, .repartoClients1::-webkit-scrollbar, .repartoClients3::-webkit-scrollbar{
+	background: #121212;
+    width: 7px;
+    border-radius: 4px;
+}
+.table1 .celDetalles::-webkit-scrollbar-thumb,.table1::-webkit-scrollbar-thumb,.repartoClients2::-webkit-scrollbar-thumb,.repartoClients1::-webkit-scrollbar-thumb,.repartoClients3::-webkit-scrollbar-thumb{
+    background: #212121;
+    border-radius: 4px;
+}
+.table2 th{
+	margin: auto;
+	text-align: center;
+	align-content: center;
+	justify-content: center;
+	width: 180px;
+	}
+.table1 th{
+color: #e8a84a;
+	}
+.table1 td{
+	height: 20px;
+background-color: #090909;
+	}
+.table1 .celDetalles{
+overflow-x: hidden;
+overflow-y: scroll;
+width: 100%;
+height: 50px;
+display: inline-block;
+text-align: left;
+justify-content: center;
+align-items: center;
+}
+.table1 tr{
+align-items: center;
+text-align: center;
+}
+
+.nroTb{
+	width: 9%;
+	}
+.detalleTb{
+width: 30%;
+	}
+.clienteTb{
+width: 15%;
+	}
+.importeTb{
+width: 10%;
+	}
+.cantidadTb{
+width: 5%;
+	}
+
+
+
+.celdaTotal{
+	width: 100px;
+	justify-content: center;
+	text-align: center;
+	width: 100%;
+	display: block;
+	float: right;
+}
+.table1{
+	align-items: center;
+	vertical-align: top;
+	text-align: center;
+	display: inline-block;
+	justify-content: center;
+	margin: 10px; 
+	width: 58%;
+	align-content: center;
+}
+.table2{
+	align-items: center;
+	display: block;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+}
+.colBotones{
+	background-color: #fa2;
+	width: 25%;
+	height: auto;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	vertical-align: top;
+	background:  linear-gradient(to right, #090909, #010101);
+}
+.divBotones{
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+	vertical-align: top;
+}
+.divBotones button{
+	margin: 1px;
+	vertical-align: middle;
+	cursor: pointer;
+	padding: 8px;
+	border:none;
+	border-radius: 8px;
+	font-size: 15px;
+	background: #e8a84a;
+}
+.divBotones .mas{
+	float: left;
+	background: #121212;
+	color: #e8a84a;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border-radius: 20px;
+}
+.divBotones .mas:active{
+	background: #e8a84a;
+	color: #121212;
+}
+.boton:hover{
+	background: #ffdac7;
+}
+.boton:active{
+	background: #121212;
+	color: #e8a84a;
+}
+.output{
+	font-size: 20px;
+}
+/*#empanadasHref{
+	background-color: #771212;
+}*/
+
+.table3{
+	box-shadow:  -0.5px 0.5px 8px 0.7px #ea7912;
+	margin-top: 60px;
+	align-items: center;
+	display: block;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+}
+.table3 th{
+	width: 120px;
+}
+.table3 button{
+	border-radius: 40%;
+	background: #121212;
+	color: #e8a84a;
+	border:none;
+	display: block;
+	margin: auto;
+	margin-bottom: 3px;
+	font-size: 18px;
+	padding: 6px;
+	cursor: pointer;
+}
+.table3 button:active{
+	background: #e8a84a;
+	color: #121212;
+}
+.repartoClients2, .repartoClients1, .repartoClients3{
+	border-left:solid 2.5px #e8a84a;
+	width: 200px;
+	height: 70px;
+	overflow-y: scroll;
+}
+.table3 .borr{
+	background: none;
+	color: #ef4441;
+}
+.contein{
+	display: inline-block;
+	width: 30%;
+	float: right;
+}
+
+.templa, .noTempla{
+	display: none;
+	width: 260px;
+	height: auto;
+	border:solid 1px #000;
+}
+
+
+
+
+
+.none{
+	display: none;
+}
+
+
+.impDate{
+	font-family: Rye-Regular;
+	text-shadow: #000 -4px 0 8px;
+	display: block;
+	font-size: 20px;
+	margin-bottom: -5px;
+	margin-top: -14px;
+	margin-right: 10px;
+	float: right;
+}
+
+nav a{
+	display: block;
+}
+
+.form-date{
+	display: block;
+	margin: auto;
+	justify-content: center;
+	margin-top: 70px;
+	background-color: #080808;
+	width: 48%;
+}
+.form-date h3{
+	color: #ea7912;
+	font-size: 50px;
+	display: block;
+	margin: auto;
+	justify-content: center;
+	margin-bottom: 8px;
+	text-align: center;
+}
+.form-date input{
+	display: block;
+	margin:auto;
+	margin-bottom: 5px;
+	align-items: center;
+	font-size: 16px;
+	justify-content: center;
+}
+.form-date h5{
+	display: block;
+	font-size: 25px;
+	margin: auto;
+	text-align: center;
+	justify-content: center;
+}
+
+
+
+.iniciarSesion,.cerrarSesion{
+	border-radius: 5px;
+	border:none;
+	padding: 8px;
+	cursor: pointer;
+}
+.iniciarSesion{
+	background-color: #689956;
+}
+.iniciarSesion:active{
+	background-color: #68e956;
+}
+.cerrarSesion{
+	background-color: #670202;
+	display: inline-block;
+	vertical-align: bottom;
+	margin: auto;
+	justify-content: center;
+	color: #fff;
+}
+.cerrarSesion:active{
+	background-color: #771212;
+}
+.imprCuaderno{
+	background-color: #235;
+	display: inline-block;
+	padding: 10px;
+	vertical-align: bottom;
+	margin: auto;
+	justify-content: center;
+	color: #fff;
+	border-radius: 5px;
+	border:none;
+	padding: 8px;
+	cursor: pointer;
+}
+.imprCuaderno:active{
+	background-color: #223;
+}
+
+.celdaClase{
+	display: none;
+}
+
+@media print{
+	title,header,.contein,.agregar,.colBotones,.cerrarSesion,.imprCuaderno{
+		display: none;
+	}
+	.table1{
+		width: 100%;
+		color:#000;
+	}
+	.table1 td{
+		border: solid 1px #000;
+	}
+	.table1 .celDetalles{
+	overflow-y: hidden;
+	height: auto;
+	}
+}
