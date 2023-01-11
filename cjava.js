@@ -384,7 +384,7 @@ let Mirinda2L= document.getElementById('Mirinda2L')
 let Secco= document.getElementById('Secco')
 	.addEventListener("click",()=>{selectComida(0,bebidasdb[3].nombre,bebidasdb[3].precio)});
 
-let Coca2L= document.getElementById('Coca2L')
+let Coca15L= document.getElementById('Coca15L')
 	.addEventListener("click",()=>{selectComida(0,bebidasdb[4].nombre,bebidasdb[4].precio)});
 
 let JugoFresh= document.getElementById('JugoFresh')
@@ -392,6 +392,9 @@ let JugoFresh= document.getElementById('JugoFresh')
 
 let VasoGaseosa= document.getElementById('VasoGaseosa')
 	.addEventListener("click",()=>{selectComida(0,bebidasdb[6].nombre,bebidasdb[6].precio)});
+
+let LataQuilmes= document.getElementById('LataQuilmes')
+	.addEventListener("click",()=>{selectComida(0,bebidasdb[7].nombre,bebidasdb[7].precio)});
 
 
 
