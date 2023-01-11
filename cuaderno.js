@@ -1,4 +1,4 @@
-let data,output=[],delivery1="Maia",delivery2="Barbi",delivery3="Santy",retiro="retirado",pagado="pagado";
+let data,output=[],delivery1="Maia",delivery2="Barbi",delivery3="Abel",retiro="retirado",pagado="pagado";
 let hidden_delivery1=[],hidden_delivery2=[],hidden_delivery3=[];
 let agregar=document.querySelector(".agregar")
 let table1=document.querySelector(".table1")
