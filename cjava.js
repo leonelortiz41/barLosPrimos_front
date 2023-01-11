@@ -384,7 +384,7 @@ let Mirinda2L= document.getElementById('Mirinda2L')
 let Secco= document.getElementById('Secco')
 	.addEventListener("click",()=>{selectComida(0,bebidasdb[3].nombre,bebidasdb[3].precio)});
 
-let Coca1_5L= document.getElementById('Coca1_5L')
+let Coca15L= document.getElementById('Coca15L')
 	.addEventListener("click",()=>{selectComida(0,bebidasdb[4].nombre,bebidasdb[4].precio)});
 
 let JugoFresh= document.getElementById('JugoFresh')
