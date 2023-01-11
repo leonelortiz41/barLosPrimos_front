@@ -214,7 +214,12 @@ $(".comidas").click(function(){$(".agregadoJamon").show()})
 		$(".general").show()
 		$(".navegador").show()
 		let fecha=document.querySelector(".fecha").value
-		localStorage.setItem("session",fecha)
+		// localStorage.setItem("session",fecha)
+		fetch("https://apibar-production.up.railway.app/date",{
+		method: "POST",
+		body: JSON.stringify(fecha),
+		headers: {"content-type": "application/json"}
+	})
 		$(".impDate").html(`<h2>${fecha}</h2>`)
 	})
 
