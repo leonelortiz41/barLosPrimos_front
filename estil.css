@@ -1,4 +1,4 @@
-@font-face{
+@font-face {
 	font-family: hiromisake;
 	src: url(HIROMISAKE.ttf);
 	font-family: viking;
@@ -7,41 +7,47 @@
 	src: url(Rye-Regular.ttf);
 
 }
-body{
+
+body {
 	background-color: #010101;
 	color: #fff;
 	font-family: sans-serif;
 	-webkit-user-select: none;
 }
-.Encabezado{
+
+.Encabezado {
 	display: flex;
 	margin: auto;
 	background-color: #111111;
 	padding: 3px;
 	border-radius: 10px;
 }
-.Encabezado2{
+
+.Encabezado2 {
 	display: flex;
 	margin: auto;
 	background-color: #58f;
 	padding: 3px;
 	border-radius: 10px;
 }
-.Encabezado h2{
+
+.Encabezado h2 {
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-left: 50px;
 	display: inline-block;
 }
-.Encabezado p{
+
+.Encabezado p {
 	margin-top: auto;
 	margin-bottom: auto;
 	justify-content: center;
 	text-align: left;
 	display: inline-block;
-	font-size: 21px; 
+	font-size: 21px;
 }
-.Encabezado .cancelar{
+
+.Encabezado .cancelar {
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-left: 50px;
@@ -51,15 +57,17 @@ body{
 	float: right;
 	font-size: 20px;
 	border-radius: 8px;
-	border:none;
+	border: none;
 	cursor: pointer;
 	background: #fe0606;
 	color: #fff;
 }
-.Encabezado .cancelar:active{
+
+.Encabezado .cancelar:active {
 	background: #000;
 }
-h1{	
+
+h1 {
 	display: inline-block;
 	font-size: 67px;
 	text-shadow: #000 -4px 0 8px;
@@ -74,33 +82,82 @@ h1{
 	margin-right: auto;
 	color: #fe8819;
 }
-.divStock{
+
+.lds-ring {
+	display: block;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	color: #e3a934;
+}
+
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 84px;
+	height: 84px;
+	margin: 8px;
+	border: 10px  #fff solid;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.7, 0.6, 0.5, 0.8) infinite;
+	border-color: #e3a934 transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.49s;
+}
+
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.6s;
+}
+
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.divStock {
 	display: flex;
 }
-.divStock label{
-margin-left: 5px;
-width: 98px;
-height: 46px;
-background: #000;
-border-radius: 5px;
-border:none;
+
+.divStock label {
+	margin-left: 5px;
+	width: 98px;
+	height: 46px;
+	background: #000;
+	border-radius: 5px;
+	border: none;
 }
-.divStock label input{
+
+.divStock label input {
 	margin: auto;
 	text-align: center;
 	background: none;
-	border:none;
+	border: none;
 	outline: none;
 	font-size: 15px;
 	width: 80%;
 	color: #f8a845;
 }
-.divStock label input::-webkit-inner-spin-button, 
-.divStock label input::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+
+.divStock label input::-webkit-inner-spin-button,
+.divStock label input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
-.Contenedor{
+
+.Contenedor {
 	border-radius: 10px;
 	display: flex;
 	height: 120px;
@@ -110,7 +167,7 @@ border:none;
 	background-color: #111111;
 }
 
-.Contenedor a{
+.Contenedor a {
 	background-color: #000;
 	padding: 3px;
 	display: flex;
@@ -120,19 +177,21 @@ border:none;
 	text-decoration: none;
 	font-family: sans-serif;
 	font-size: 16px;
-	margin:4px;
+	margin: 4px;
 	border-radius: 8px;
 	height: 70px;
 	width: 140px;
 }
-.Contenedor span{
+
+.Contenedor span {
 	margin: auto;
 }
-.Contenedor a:hover{	
+
+.Contenedor a:hover {
 	text-align: center;
 	font-size: 19px;
 	text-decoration: blink;
-	margin:4px;
+	margin: 4px;
 	color: #e90;
 	border-radius: 10px;
 	height: 95px;
@@ -143,9 +202,11 @@ border:none;
 
 
 
-.general .nav-items, .general .complementos{
+.general .nav-items,
+.general .complementos {
 	display: none;
 }
+
 #milanesas .nav-items,
 #lomitos .nav-items,
 #hamburguesas .nav-items,
@@ -153,7 +214,7 @@ border:none;
 #papas .nav-items,
 #platos .nav-items,
 #empanadas .nav-items,
-#bebidas .nav-items{
+#bebidas .nav-items {
 	display: inline-block;
 	border-left: solid 5px #111111;
 	margin-top: 25px;
@@ -163,16 +224,16 @@ border:none;
 }
 
 
-.menus .nav-items button{
+.menus .nav-items button {
 	list-style: none;
 	justify-content: center;
 	align-items: center;
 	text-align: left;
 	background-color: #101010;
 	color: #fff;
-	border:none;
+	border: none;
 	width: 90%;
-	border-radius: 0px  8px 4px 0px;
+	border-radius: 0px 8px 4px 0px;
 	margin: auto;
 	padding: 2px;
 	padding-left: 8px;
@@ -181,21 +242,22 @@ border:none;
 	cursor: pointer;
 }
 
-.menus .nav-items button:focus{
+.menus .nav-items button:focus {
 	background: #313131;
 }
-.nav-items button:hover{
+
+.nav-items button:hover {
 	background-color: #191919;
 }
 
 
-#pizzas .nav-items button{
-	width: 48%;	
+#pizzas .nav-items button {
+	width: 48%;
 	font-size: 16px;
 }
 
 
-.elementos{
+.elementos {
 	display: inline-block;
 	width: 33%;
 	vertical-align: top;
@@ -205,25 +267,26 @@ border:none;
 	cursor: pointer;
 }
 
-.complementos{
+.complementos {
 	display: inline-block;
 	margin-top: 25px;
 	padding: 8px;
 	border-radius: 10px;
 }
 
-.complementos label{
+.complementos label {
 	margin-bottom: 2px;
 }
-.general .agregar{
+
+.general .agregar {
 	display: inline;
 	float: right;
 	vertical-align: top;
 	color: #000;
-	border:none;
+	border: none;
 	margin: auto;
-	margin-top:12px;
-	margin-bottom:12px;
+	margin-top: 12px;
+	margin-bottom: 12px;
 	margin-right: 9px;
 	text-align: center;
 	justify-content: center;
@@ -231,10 +294,14 @@ border:none;
 	border-radius: 50px;
 	cursor: pointer;
 }
-.aggregations input[type=checkbox],.complementos label input[type=checkbox]{
+
+.aggregations input[type=checkbox],
+.complementos label input[type=checkbox] {
 	display: none;
 }
-.aggregations .agg:before,.complementos label label:before{
+
+.aggregations .agg:before,
+.complementos label label:before {
 	content: "";
 	border: 2.5px solid #404040;
 	border-radius: 10px;
@@ -244,10 +311,14 @@ border:none;
 	display: inline-block;
 	vertical-align: middle;
 }
-.aggregations input[type=checkbox] + label,.complementos label input[type=checkbox] + label{
+
+.aggregations input[type=checkbox]+label,
+.complementos label input[type=checkbox]+label {
 	cursor: pointer;
 }
-.aggregations input[type=checkbox]:checked + label:before,.complementos label input[type=checkbox]:checked + label:before{
+
+.aggregations input[type=checkbox]:checked+label:before,
+.complementos label input[type=checkbox]:checked+label:before {
 	content: "✔";
 	justify-content: center;
 	text-align: center;
@@ -255,12 +326,14 @@ border:none;
 	font-size: 19px;
 	background: #fe7911;
 }
-.aggregations{
+
+.aggregations {
 	display: inline-block;
 	float: right;
 	width: 17%;
 }
-.aggregations .agg{
+
+.aggregations .agg {
 	display: block;
 	width: 80%;
 	margin: auto;
@@ -268,7 +341,11 @@ border:none;
 	justify-content: center;
 	float: right;
 }
-.agregadoPapas,.agregadoQueso,.agregadoJamon,.agregadoHuevo{
+
+.agregadoPapas,
+.agregadoQueso,
+.agregadoJamon,
+.agregadoHuevo {
 	padding: 5px;
 	display: block;
 	margin: auto;
@@ -276,24 +353,27 @@ border:none;
 	text-align: left;
 	justify-content: center;
 	background: #111;
-	border-radius: 10px; 
+	border-radius: 10px;
 	font-size: 15px;
 }
-.papasCantidad,.huevoCantidad{
-width: 30px;
-height: 20px;
-text-align: center;
-float: right;
-font-size: 18px;
-border-radius: 3px;
+
+.papasCantidad,
+.huevoCantidad {
+	width: 30px;
+	height: 20px;
+	text-align: center;
+	float: right;
+	font-size: 18px;
+	border-radius: 3px;
 }
-.agregar{
+
+.agregar {
 	height: 73px;
 	width: 73px;
 	display: inline-block;
 	vertical-align: top;
 	color: #000;
-	border:none;
+	border: none;
 	text-align: center;
 	justify-content: center;
 	font-size: 59px;
@@ -302,27 +382,29 @@ border-radius: 3px;
 	cursor: pointer;
 }
 
-.agregar:active{
+.agregar:active {
 	background-color: #ffb122;
 }
 
-.contAgreg{
+.contAgreg {
 	display: inline-block;
 }
-.contAgreg .agregar{
+
+.contAgreg .agregar {
 	margin-top: 5px;
 }
-.carrito1{
+
+.carrito1 {
 	width: 31%;
 	height: 290px;
 	color: #fff;
 	float: right;
 	margin-top: 5px;
 	vertical-align: top;
-	box-shadow:  6px -4px 5px -3px #ea7912;
+	box-shadow: 6px -4px 5px -3px #ea7912;
 }
 
-.tableOrder{
+.tableOrder {
 	width: 99%;
 	display: block;
 	margin: auto;
@@ -330,18 +412,21 @@ border-radius: 3px;
 	overflow-y: scroll;
 	justify-content: center;
 }
-.tableOrder::-webkit-scrollbar{
-    display: none;
+
+.tableOrder::-webkit-scrollbar {
+	display: none;
 }
-.celdatableOrder{
+
+.celdatableOrder {
 	background: #050505;
 	width: 98%;
 	justify-content: center;
 	display: flex;
-	margin:auto;
+	margin: auto;
 	margin-top: 2.5px;
 }
-.celdaBoton{
+
+.celdaBoton {
 	display: inline-block;
 	height: 30px;
 	width: 30px;
@@ -355,15 +440,18 @@ border-radius: 3px;
 	border-radius: 20px;
 
 }
-.celdaCantidad{
+
+.celdaCantidad {
 	width: 7%;
 	text-align: center;
 }
-.celdaComida{
+
+.celdaComida {
 	width: 62%;
 	text-align: left;
 }
-.celdaPrecio{
+
+.celdaPrecio {
 	width: 16%;
 	color: #55feae;
 	align-items: center;
@@ -371,8 +459,9 @@ border-radius: 3px;
 	vertical-align: middle;
 	text-align: left;
 }
-.carrito .enviar{
-	width:  auto;
+
+.carrito .enviar {
+	width: auto;
 	padding: 10px;
 	display: inline-block;
 	color: #000;
@@ -380,19 +469,20 @@ border-radius: 3px;
 	justify-content: center;
 	font-size: 20px;
 	border-radius: 19px;
-	border:none;
+	border: none;
 	background-color: #ea7912;
 	cursor: pointer;
 }
-.carrito i{
+
+.carrito i {
 	justify-content: center;
 	text-align: center;
 	display: block;
 	vertical-align: middle;
 }
 
-.carrito .cliente{
-	width:  195px;
+.carrito .cliente {
+	width: 195px;
 	padding: 2px;
 	display: inline-block;
 	color: #fff;
@@ -400,17 +490,18 @@ border-radius: 3px;
 	padding-left: 5px;
 	font-size: 26px;
 	justify-content: center;
-	border:none;
+	border: none;
 	background-color: #111;
 	cursor: pointer;
 }
-.carrito .enviar:active{
+
+.carrito .enviar:active {
 	background-color: #ffb122;
 }
 
 
-.pedidoEdit{
-	width:  195px;
+.pedidoEdit {
+	width: 195px;
 	padding: 2px;
 	display: inline-block;
 	color: #000;
@@ -419,16 +510,18 @@ border-radius: 3px;
 	font-size: 20px;
 	justify-content: center;
 	border-radius: 8px;
-	border:none;
+	border: none;
 	margin: 10px;
 	background-color: #fff;
 	cursor: pointer;
 	position: relative;
 }
-.importeOutput{
+
+.importeOutput {
 	border-radius: 10px;
 	display: inline-block;
-	width: 20%;;
+	width: 20%;
+	;
 	margin-top: 5px;
 	height: 2px;
 	justify-content: center;
@@ -441,90 +534,114 @@ border-radius: 3px;
 
 
 
-.navegador{
+.navegador {
 	display: inline-block;
 	margin: 10px;
 	float: right;
 }
-.navegador a{
+
+.navegador a {
 	padding: 8px;
 	color: #fff;
 	font-size: 20px;
 	text-align: right;
 	text-decoration-line: none;
 }
-.navegador a:active{
+
+.navegador a:active {
 	color: #999;
 }
-.navegador a:hover{
+
+.navegador a:hover {
 	text-shadow: #999 0px 0 8px;
 }
-.table2 th,.table2 td{
-	box-shadow:  -2px 2px 6px -3px #ea7912;
+
+.table2 th,
+.table2 td {
+	box-shadow: -2px 2px 6px -3px #ea7912;
 }
-.table1{
+
+.table1 {
 	border-right: none;
 	height: 440px;
 	overflow-y: scroll;
 }
 
-.table1 .celDetalles::-webkit-scrollbar,.table1::-webkit-scrollbar,.repartoClients2::-webkit-scrollbar, .repartoClients1::-webkit-scrollbar, .repartoClients3::-webkit-scrollbar{
+.table1 .celDetalles::-webkit-scrollbar,
+.table1::-webkit-scrollbar,
+.repartoClients2::-webkit-scrollbar,
+.repartoClients1::-webkit-scrollbar,
+.repartoClients3::-webkit-scrollbar {
 	background: #121212;
-    width: 7px;
-    border-radius: 4px;
+	width: 7px;
+	border-radius: 4px;
 }
-.table1 .celDetalles::-webkit-scrollbar-thumb,.table1::-webkit-scrollbar-thumb,.repartoClients2::-webkit-scrollbar-thumb,.repartoClients1::-webkit-scrollbar-thumb,.repartoClients3::-webkit-scrollbar-thumb{
-    background: #212121;
-    border-radius: 4px;
+
+.table1 .celDetalles::-webkit-scrollbar-thumb,
+.table1::-webkit-scrollbar-thumb,
+.repartoClients2::-webkit-scrollbar-thumb,
+.repartoClients1::-webkit-scrollbar-thumb,
+.repartoClients3::-webkit-scrollbar-thumb {
+	background: #212121;
+	border-radius: 4px;
 }
-.table2 th{
+
+.table2 th {
 	margin: auto;
 	text-align: center;
 	align-content: center;
 	justify-content: center;
 	width: 180px;
-	}
-.table1 th{
-color: #e8a84a;
-	}
-.table1 td{
+}
+
+.table1 th {
+	color: #e8a84a;
+}
+
+.table1 td {
 	height: 20px;
-background-color: #090909;
-	}
-.table1 .celDetalles{
-overflow-x: hidden;
-overflow-y: scroll;
-width: 100%;
-height: 50px;
-display: inline-block;
-text-align: left;
-justify-content: center;
-align-items: center;
-}
-.table1 tr{
-align-items: center;
-text-align: center;
+	background-color: #090909;
 }
 
-.nroTb{
+.table1 .celDetalles {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 100%;
+	height: 50px;
+	display: inline-block;
+	text-align: left;
+	justify-content: center;
+	align-items: center;
+}
+
+.table1 tr {
+	align-items: center;
+	text-align: center;
+}
+
+.nroTb {
 	width: 9%;
-	}
-.detalleTb{
-width: 30%;
-	}
-.clienteTb{
-width: 15%;
-	}
-.importeTb{
-width: 10%;
-	}
-.cantidadTb{
-width: 5%;
-	}
+}
+
+.detalleTb {
+	width: 30%;
+}
+
+.clienteTb {
+	width: 15%;
+}
+
+.importeTb {
+	width: 10%;
+}
+
+.cantidadTb {
+	width: 5%;
+}
 
 
 
-.celdaTotal{
+.celdaTotal {
 	width: 100px;
 	justify-content: center;
 	text-align: center;
@@ -532,24 +649,27 @@ width: 5%;
 	display: block;
 	float: right;
 }
-.table1{
+
+.table1 {
 	align-items: center;
 	vertical-align: top;
 	text-align: center;
 	display: inline-block;
 	justify-content: center;
-	margin: 10px; 
+	margin: 10px;
 	width: 58%;
 	align-content: center;
 }
-.table2{
+
+.table2 {
 	align-items: center;
 	display: block;
 	text-align: center;
 	justify-content: center;
 	align-content: center;
 }
-.colBotones{
+
+.colBotones {
 	background-color: #fa2;
 	width: 25%;
 	height: auto;
@@ -557,25 +677,28 @@ width: 5%;
 	text-align: center;
 	justify-content: center;
 	vertical-align: top;
-	background:  linear-gradient(to right, #090909, #010101);
+	background: linear-gradient(to right, #090909, #010101);
 }
-.divBotones{
+
+.divBotones {
 	display: block;
 	margin-top: auto;
 	margin-bottom: auto;
 	vertical-align: top;
 }
-.divBotones button{
+
+.divBotones button {
 	margin: 1px;
 	vertical-align: middle;
 	cursor: pointer;
 	padding: 8px;
-	border:none;
+	border: none;
 	border-radius: 8px;
 	font-size: 15px;
 	background: #e8a84a;
 }
-.divBotones .mas{
+
+.divBotones .mas {
 	float: left;
 	background: #121212;
 	color: #e8a84a;
@@ -584,26 +707,31 @@ width: 5%;
 	text-align: center;
 	border-radius: 20px;
 }
-.divBotones .mas:active{
+
+.divBotones .mas:active {
 	background: #e8a84a;
 	color: #121212;
 }
-.boton:hover{
+
+.boton:hover {
 	background: #ffdac7;
 }
-.boton:active{
+
+.boton:active {
 	background: #121212;
 	color: #e8a84a;
 }
-.output{
+
+.output {
 	font-size: 20px;
 }
+
 /*#empanadasHref{
 	background-color: #771212;
 }*/
 
-.table3{
-	box-shadow:  -0.5px 0.5px 8px 0.7px #ea7912;
+.table3 {
+	box-shadow: -0.5px 0.5px 8px 0.7px #ea7912;
 	margin-top: 60px;
 	align-items: center;
 	display: block;
@@ -611,14 +739,16 @@ width: 5%;
 	justify-content: center;
 	align-content: center;
 }
-.table3 th{
+
+.table3 th {
 	width: 120px;
 }
-.table3 button{
+
+.table3 button {
 	border-radius: 40%;
 	background: #121212;
 	color: #e8a84a;
-	border:none;
+	border: none;
 	display: block;
 	margin: auto;
 	margin-bottom: 3px;
@@ -626,43 +756,50 @@ width: 5%;
 	padding: 6px;
 	cursor: pointer;
 }
-.table3 button:active{
+
+.table3 button:active {
 	background: #e8a84a;
 	color: #121212;
 }
-.repartoClients2, .repartoClients1, .repartoClients3{
-	border-left:solid 2.5px #e8a84a;
+
+.repartoClients2,
+.repartoClients1,
+.repartoClients3 {
+	border-left: solid 2.5px #e8a84a;
 	width: 200px;
 	height: 70px;
 	overflow-y: scroll;
 }
-.table3 .borr{
+
+.table3 .borr {
 	background: none;
 	color: #ef4441;
 }
-.contein{
+
+.contein {
 	display: inline-block;
 	width: 30%;
 	float: right;
 }
 
-.templa, .noTempla{
+.templa,
+.noTempla {
 	display: none;
 	width: 260px;
 	height: auto;
-	border:solid 1px #000;
+	border: solid 1px #000;
 }
 
 
 
 
 
-.none{
+.none {
 	display: none;
 }
 
 
-.impDate{
+.impDate {
 	font-family: Rye-Regular;
 	text-shadow: #000 -4px 0 8px;
 	display: block;
@@ -673,11 +810,11 @@ width: 5%;
 	float: right;
 }
 
-nav a{
+nav a {
 	display: block;
 }
 
-.form-date{
+.form-date {
 	display: block;
 	margin: auto;
 	justify-content: center;
@@ -685,7 +822,8 @@ nav a{
 	background-color: #080808;
 	width: 48%;
 }
-.form-date h3{
+
+.form-date h3 {
 	color: #ea7912;
 	font-size: 50px;
 	display: block;
@@ -694,15 +832,17 @@ nav a{
 	margin-bottom: 8px;
 	text-align: center;
 }
-.form-date input{
+
+.form-date input {
 	display: block;
-	margin:auto;
+	margin: auto;
 	margin-bottom: 5px;
 	align-items: center;
 	font-size: 16px;
 	justify-content: center;
 }
-.form-date h5{
+
+.form-date h5 {
 	display: block;
 	font-size: 25px;
 	margin: auto;
@@ -712,19 +852,23 @@ nav a{
 
 
 
-.iniciarSesion,.cerrarSesion{
+.iniciarSesion,
+.cerrarSesion {
 	border-radius: 5px;
-	border:none;
+	border: none;
 	padding: 8px;
 	cursor: pointer;
 }
-.iniciarSesion{
+
+.iniciarSesion {
 	background-color: #689956;
 }
-.iniciarSesion:active{
+
+.iniciarSesion:active {
 	background-color: #68e956;
 }
-.cerrarSesion{
+
+.cerrarSesion {
 	background-color: #670202;
 	display: inline-block;
 	vertical-align: bottom;
@@ -732,10 +876,12 @@ nav a{
 	justify-content: center;
 	color: #fff;
 }
-.cerrarSesion:active{
+
+.cerrarSesion:active {
 	background-color: #771212;
 }
-.imprCuaderno{
+
+.imprCuaderno {
 	background-color: #235;
 	display: inline-block;
 	padding: 10px;
@@ -744,31 +890,42 @@ nav a{
 	justify-content: center;
 	color: #fff;
 	border-radius: 5px;
-	border:none;
+	border: none;
 	padding: 8px;
 	cursor: pointer;
 }
-.imprCuaderno:active{
+
+.imprCuaderno:active {
 	background-color: #223;
 }
 
-.celdaClase{
+.celdaClase {
 	display: none;
 }
 
-@media print{
-	title,header,.contein,.agregar,.colBotones,.cerrarSesion,.imprCuaderno{
+@media print {
+
+	title,
+	header,
+	.contein,
+	.agregar,
+	.colBotones,
+	.cerrarSesion,
+	.imprCuaderno {
 		display: none;
 	}
-	.table1{
+
+	.table1 {
 		width: 100%;
-		color:#000;
+		color: #000;
 	}
-	.table1 td{
+
+	.table1 td {
 		border: solid 1px #000;
 	}
-	.table1 .celDetalles{
-	overflow-y: hidden;
-	height: auto;
+
+	.table1 .celDetalles {
+		overflow-y: hidden;
+		height: auto;
 	}
 }

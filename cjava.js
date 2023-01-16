@@ -41,6 +41,10 @@ let sumaPanSaPapas = 0;
 let sumaPanHamPapas = 0;
 let milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidasdb;
 let colorSan = "#121212", colorHamb = "#121212", colorPapas = "#121212", colorPizzas = "#121212", colorSaPapas = "#121212", colorHamPapas = "#121212";
+
+let ldsring = document.querySelector(".lds-ring");
+$(".form-date").hide();
+$(".general").hide();
 const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidasdb) => {
 
 	let stockSan = localStorage.getItem("stockSan") || null;
@@ -99,10 +103,6 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	if ((stockHamb > 0 && stockHamb <= 10) || stockPapas > 0 && stockPapas <= 10) colorHamPapas = "#a97915"
 	if (stockHamb == 0 || stockPapas == 0) colorHamPapas = "#a92222";
 
-	// window.addEventListener("load",()=>{
-	// 	$(".Encabezado").css("background","#f90")
-	// })
-
 	milanesasdb = await fetch("https://apibar-production.up.railway.app/milanesas"); milanesasdb = await milanesasdb.json();
 	lomitosdb = await fetch("https://apibar-production.up.railway.app/lomitos"); lomitosdb = await lomitosdb.json();
 	hamburguesasdb = await fetch("https://apibar-production.up.railway.app/hamburguesas"); hamburguesasdb = await hamburguesasdb.json();
@@ -110,6 +110,8 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	papasdb = await fetch("https://apibar-production.up.railway.app/papas"); papasdb = await papasdb.json();
 	platosdb = await fetch("https://apibar-production.up.railway.app/platos"); platosdb = await platosdb.json();
 	bebidasdb = await fetch("https://apibar-production.up.railway.app/bebidas"); bebidasdb = await bebidasdb.json();
+	ldsring.remove();
+
 	detalleTicket.innerHTML = ""
 	let pedidoActual = {
 		id: [],
@@ -125,7 +127,10 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		cliente: "",
 		pedido: [],
 		detalle: "",
-		importe: parseInt()
+		importe: parseInt(),
+		statu: "",
+		pagado: 0,
+		pj: 0
 	};
 	let importeSuma = parseInt(0);
 	let j = 0;
@@ -163,10 +168,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		activ[i] = false
 		$(celda).hide()
 	};
-	let ingredientes = [9];
-
 	let edit = localStorage.getItem("edit") || null
-	let session = localStorage.getItem("session") || null
 
 	$(document).ready(function () {
 
@@ -213,13 +215,12 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 				window.location.href = "cuaderno.html"
 			})
 		}
-
-
 		fetch("https://apibar-production.up.railway.app/date")
 			.then(r => r.json())
 			.then(r => {
-				if (r.length== 0) {
+				if (r.length == 0) {
 					$(".general").hide()
+					$(".form-date").show();
 					$(".navegador").hide()
 					$(".form-date").submit(function (e) {
 						e.preventDefault()
@@ -227,20 +228,18 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 						$(".general").show()
 						$(".navegador").show()
 						let fecha = {
-							fecha:	`${document.querySelector(".fecha").value}`
+							fecha: `${document.querySelector(".fecha").value}`
 						}
-						console.log(JSON.stringify(fecha))
-						// localStorage.setItem("session",fecha)
-							fetch("https://apibar-production.up.railway.app/date",{
+						fetch("https://apibar-production.up.railway.app/date", {
 							method: "POST",
 							body: JSON.stringify(fecha),
-							headers: {"content-type": "application/json"}
+							headers: { "content-type": "application/json" }
 						})
 						$(".impDate").html(`<h2>${fecha.fecha}</h2>`)
 					})
-
 				} else {
 					$(".form-date").hide();
+					$(".general").show();
 					let fecha = r[0].fecha
 					$(".impDate").html(`<h2>${fecha}</h2>`);
 				}
@@ -250,9 +249,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	$(".agregadoHuevo").css("display", "block")
 	$(".agregadoQueso").css("display", "block")
 	$(".agregadoJamon").css("display", "block")
-
 	$(".elementos div").hide()
-
 	const mostrarElementos = (element) => {
 		$(`#${element}Href`).click(function () {
 			$(".elementos div").hide()
@@ -268,8 +265,6 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	// mostrarElementos("empanadas")
 	$(`#empanadasHref`).click(function () { $(".elementos div").hide() })
 	mostrarElementos("bebidas")
-
-
 	$("#MilanesaComun").click((e) => {
 		selectComida("comun", "Milanesa comun", milanesasdb[0].precio, e.target.classList[1])
 	}).css("background", colorSan)
@@ -281,7 +276,6 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 
 	$("#MilanesaPapas").click((e) => {
 		selectComida("papas", "Milanesa esp. de papas", milanesasdb[2].precio, e.target.classList[1])
-		console.log(e.target.classList[1])
 	}).css("background", colorSaPapas)
 
 	$("#JuniorComun").click((e) => {
@@ -519,8 +513,6 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		}
 		if (hidden_nombre != undefined) {
 			hidden_nombre += pedi
-			// Aki me qede 31 de julio 17:47  poner hiddennombre=hidnombre+pedi pa q funcione lo de editar pedido
-			// ***********************************************************************
 			for (var h = 0; h <= 50; h++) {
 				if (activ[h] == false) {
 					$(celda[h]).show()
@@ -559,13 +551,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			}
 		}
 		hidden_nombre = undefined
-
-
-		console.log(sumaPanHamb)
 	})
-
-
-
 	celda.forEach(cel => {
 		cel.children[0].addEventListener("click", () => {
 			pedidoActual.id.forEach(id => {
@@ -621,7 +607,6 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			importeOutput.value = pedidoFinal.importe
 		})
 	})
-
 	const sumadorDeImportes = () => {
 		let sumaImportes = 0;
 		celda.forEach(cel => {
@@ -664,21 +649,18 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			})
 		})
 	}
-
-
-	// 
-	// 
-	// 
-	// 
-	// 
-	// ULTIMAR DETALLES DE STOCK
-	// Hacer que reste el stock cuando se envie el pedido
-	// 
-	// 
-	// 
-	// 
-	// 
-	// 
+	const enviarData = async () => {
+		let petiPOST = await fetch("https://apibar-production.up.railway.app/pedidos", {
+			method: "POST",
+			body: JSON.stringify(pedidoFinal),
+			headers: { "content-type": "application/json" }
+		})
+		let dataPOST = await petiPOST.json();
+		let petiGET = await fetch("https://apibar-production.up.railway.app/pedidos")
+		let dataGET = await petiGET.json();
+		ticketCosina(dataGET[dataGET.length - 1].id, pedidoFinal.cliente, pedidoFinal.detalle)
+		window.location.reload();
+	}
 	carrito.addEventListener("submit", (e) => {
 		e.preventDefault();
 		try {
@@ -686,10 +668,8 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			if (pedidoFinal.pedido.length != 0) {
 				sumadorDeImportes();
 				sumadorDeCant();
-
 				actualAFinal_detalle()
 				pedidoFinal.cliente = cliente.value;
-
 				if (edit != null) {
 					fetch(`https://apibar-production.up.railway.app/pedidos/${JSON.parse(edit).id}`, {
 						method: "PUT",
@@ -699,21 +679,13 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 					ticketCosina(JSON.parse(edit).id, pedidoFinal.cliente, pedidoFinal.detalle)
 					localStorage.removeItem("edit")
 					window.location.href = "cuaderno.html"
-
 				}
 				else {
 					let number = localStorage.getItem("numero") || 0;
 					number++;
 					localStorage.setItem("numero", number)
 					enviarData();
-
-					ticketCosina(number, pedidoFinal.cliente, pedidoFinal.detalle)
-					window.location.reload();
-
-
 				}
-
-
 			}
 			else {
 				alert("no se ingreso ningun pedido")
@@ -723,24 +695,12 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		}
 		catch (err) {
 			alert("a ocurrido un error")
-			console.log(err)
 		}
-
 		if (divStock.children[0].children[1].value != "") localStorage.setItem("stockSan", divStock.children[0].children[1].value - sumaPanSan);
 		if (divStock.children[1].children[1].value != "") localStorage.setItem("stockHamb", divStock.children[1].children[1].value - sumaPanHamb);
 		if (divStock.children[2].children[1].value != "") localStorage.setItem("stockPapas", divStock.children[2].children[1].value - sumapPapas);
 		if (divStock.children[3].children[1].value != "") localStorage.setItem("stockPizzas", divStock.children[3].children[1].value - sumapPizzas);
 	})
-
-
-	const enviarData = () => {
-		fetch("https://apibar-production.up.railway.app/pedidos", {
-			method: "POST",
-			body: JSON.stringify(pedidoFinal),
-			headers: { "content-type": "application/json" }
-		})
-	}
-
 	document.addEventListener("keydown", () => {
 		if (event.keyCode == 17) {
 			window.location.href = "cuaderno.html"
@@ -748,5 +708,4 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		}
 	});
 }
-
 recibirData(milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidasdb);

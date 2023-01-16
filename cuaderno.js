@@ -1,4 +1,4 @@
-let data, output = [], delivery1 = "Maia", delivery2 = "Barbi", delivery3 = "Abel", retiro = "retirado", pagado = "pagado";
+let output = [], delivery1 = "Maia", delivery2 = "Barbi", delivery3 = "Abel", retiro = "retirado", pagado = "pagado";
 let hidden_delivery1 = [], hidden_delivery2 = [], hidden_delivery3 = [];
 let agregar = document.querySelector(".agregar")
 let table1 = document.querySelector(".table1")
@@ -26,9 +26,6 @@ let celda = [];
 let botonEnv = [], botonDeli = [];
 
 
-const fecha = localStorage.getItem("session")
-$(".impDate").html(`<h2>${fecha}</h2>`)
-
 nombreTikDelivery.textContent = ""
 tableDelivery1.textContent = delivery1
 tableDelivery2.textContent = delivery2
@@ -43,13 +40,16 @@ importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 20}`
 importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 20}`
 importe3.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 20}`
 
-const recibirData = async (data) => {
-	data = ""
-	data = await fetch("https://apibar-production.up.railway.app/pedidos")
-	let r = await data.json()
+const recibirData = async () => {
+	let petiGETPedidos = await fetch("https://apibar-production.up.railway.app/pedidos")
+	let r = await petiGETPedidos.json()
+	let petiGETDate = await fetch("https://apibar-production.up.railway.app/date")
+	let date = await petiGETDate.json()
+	$(".impDate").html(`<h2>${date[0].fecha}</h2>`)
+
+
 
 	let dadaa = [], comida = []
-	// console.log(dadaa.pedidos[0].hidden_nombre)
 	for (var j = 0; j < r.length; j++) {
 		dadaa[j] = JSON.parse(`{ "pedidos": [${r[j].detalle}]}`)
 
@@ -114,17 +114,47 @@ const recibirData = async (data) => {
 
 	let aregloLS = JSON.parse(localStorage.getItem("pedidosEnViaje")) || []
 	let aregloViajeLS = JSON.parse(localStorage.getItem("pedidosViaje")) || []
-	let pagaJusto = JSON.parse(localStorage.getItem("pagaJusto")) || []
-
-	pagaJusto.forEach(PaJu => {
+	r.forEach(re => {
 		fila.forEach(item => {
-			if (PaJu.id == item.children[0].textContent) {
-				item.children[3].innerHTML += ` <b>(PJ)</b>`
-				$(item.children[3]).css("color", "#16ea31")
+			if (re.pj == "1") {
+				if (re.id == item.children[0].textContent) {
+					item.children[3].innerHTML += ` <b>(PJ)</b>`
+					$(item.children[3]).css("color", "#16ea31")
+				}
+			}
+			if (re.pagado == "1") {
+				if (re.id == item.children[0].textContent) {
+					item.children[5].style = "box-shadow: inset 8px -1px 10px -6px #fff;"
+					item.children[5].style.background = " linear-gradient(to right, #bea719, #010101)";
+					for (var i = item.children[5].children[0].children.length - 1; i >= 0; i--) {
+						$(item.children[5].children[0].children[i]).hide()
+					}
+					for (var i = 1; i <= 4; i++) {
+						$(item.children[5].children[0].children[i]).show()
+						$(item.children[5].children[0].children[i]).css("background", "#000")
+						$(item.children[5].children[0].children[i]).css("color", "#bea719")
+					}
+					creaOutput(output, 1, pagado)
+					item.children[5].appendChild(output[1])
+					$(".output").css("float", "left")
+					$(item.children[5].children[0]).css("float", "right")
+					item.children[5].children[1].addEventListener("click", () => {
+						item.children[5].children[1].remove();
+						const petitPUT = async () => {
+							let da= await fetch(`https://apibar-production.up.railway.app/pagado/${item.children[0].textContent}`, {
+								method: "PUT",
+								body: '{"pagado":0}',
+								headers: { "content-type": "application/json" }
+							})
+							let data= await da.json();
+							window.location.reload()
+						}
+						petitPUT();
+					})
+				}
 			}
 		})
 	})
-
 	aregloLS.forEach(aregloLS => {
 		if (aregloLS.delivery == delivery1) {
 			fila.forEach(item => {
@@ -189,7 +219,6 @@ const recibirData = async (data) => {
 		}
 	})
 
-
 	aregloViajeLS.forEach(aregloViajeLS => {
 		if (aregloViajeLS.delivery == delivery1) {
 			fila.forEach(item => {
@@ -245,7 +274,6 @@ const recibirData = async (data) => {
 					for (var i = item.children[5].children[0].children.length - 1; i >= 0; i--) {
 						item.children[5].children[0].removeChild(item.children[5].children[0].children[i])
 					}
-					console.log(item.children[5].children[1])
 					if (item.children[5].children[1]) {
 						item.children[5].removeChild(item.children[5].children[1])
 						item.children[5].innerHTML = `${delivery3}(pagado)`
@@ -309,16 +337,16 @@ const recibirData = async (data) => {
 									item.children[5].appendChild(output[2])
 								}
 							})
+							//boton para poner pagado
 							item.children[5].children[0].children[5].addEventListener("click", () => {
-								r.forEach(r => {
-									if (r.id == item.children[7].textContent) {
-										setEnViajeLS(r, pagado)
-									};
+								fetch(`https://apibar-production.up.railway.app/pagado/${item.children[0].textContent}`, {
+									method: "PUT",
+									body: '{"pagado":1}',
+									headers: { "content-type": "application/json" }
 								})
+
 								item.children[5].style = "box-shadow: inset 8px -1px 10px -6px #fff;"
 								item.children[5].style.background = " linear-gradient(to right, #bea719, #010101)";
-
-
 								for (var i = item.children[5].children[0].children.length - 1; i >= 0; i--) {
 									$(item.children[5].children[0].children[i]).hide()
 								}
@@ -330,7 +358,6 @@ const recibirData = async (data) => {
 								creaOutput(output, 1, pagado)
 								item.children[5].appendChild(output[1])
 								$(".output").css("float", "left")
-								// $(item.children[5].children[0]).css("width","290px")
 								$(item.children[5].children[0]).css("float", "right")
 							})
 							item.children[5].children[0].children[4].addEventListener("click", () => {
@@ -412,17 +439,26 @@ const recibirData = async (data) => {
 									}
 								}
 							});
+							//bonton de pagar justo
 							item.children[5].children[0].children[10].addEventListener("click", () => {
-								item.children[3].innerHTML += ` <b>(PJ)</b>`
-								$(item.children[3]).css("color", "#16ea31")
-								r.forEach(r => {
-									if (r.id == item.children[0].textContent) {
-										pagaJusto.push(r)
-										let pagaJustoJSON = JSON.stringify(pagaJusto)
-										localStorage.setItem("pagaJusto", pagaJustoJSON)
-									}
-								})
-								// item.children[3].style="color: #25e369;"
+								if (item.children[3].style.color == "") {
+									item.children[3].innerHTML += ` <b>(PJ)</b>`
+									$(item.children[3]).css("color", "#16ea31")
+									fetch(`https://apibar-production.up.railway.app/pj/${item.children[0].textContent}`, {
+										method: "PUT",
+										body: '{"pj":1}',
+										headers: { "content-type": "application/json" }
+									})
+								}
+								else {
+									item.children[3].children[0].remove()
+									$(item.children[3]).css("color", "")
+									fetch(`https://apibar-production.up.railway.app/pj/${item.children[0].textContent}`, {
+										method: "PUT",
+										body: '{"pj":0}',
+										headers: { "content-type": "application/json" }
+									})
+								}
 							});
 
 						}
@@ -468,17 +504,13 @@ const recibirData = async (data) => {
 
 document.querySelector(".cerrarSesion").addEventListener("click", () => {
 
-		fetch('https://apibar-production.up.railway.app/date', {
-			method: "DELETE"
-		})
+	fetch('https://apibar-production.up.railway.app/date', {
+		method: "DELETE"
+	})
 	cerrarSesion()
 })
 
-recibirData(data)
-
-// onload=function(){
-//     setInterval(function(){if(window.parar)return;table1.scrollTop=table1.scrollHeight},10);
-// };
+recibirData()
 
 document.addEventListener("keydown", () => {
 	if (event.keyCode == 17) {
