@@ -267,147 +267,147 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	mostrarElementos("bebidas")
 	$("#MilanesaComun").click((e) => {
 		selectComida("comun", "Milanesa comun", milanesasdb[0].precio, e.target.classList[1])
-	}).css("background", colorSan)
+	}).css("background-color", colorSan)
 
 	$("#MilanesaFiambre").click((e) => {
 		selectComida("fiambre", "Milanesa esp. de fiambre", milanesasdb[1].precio, e.target.classList[1])
 
-	}).css("background", colorSan)
+	}).css("background-color", colorSan)
 
 	$("#MilanesaPapas").click((e) => {
 		selectComida("papas", "Milanesa esp. de papas", milanesasdb[2].precio, e.target.classList[1])
-	}).css("background", colorSaPapas)
+	}).css("background-color", colorSaPapas)
 
 	$("#JuniorComun").click((e) => {
 		selectComida("comun", "Junior comun", hamburguesasdb[0].precio, e.target.classList[1])
-	}).css("background", colorHamPapas)
+	}).css("background-color", colorHamPapas)
 
 	$("#JuniorEspecial").click((e) => {
 		selectComida("comun", "Junior especial", hamburguesasdb[1].precio, e.target.classList[1])
 		label[5].style.display = "inline-block"
 		checkbox[5].checked = true;
-	}).css("background", colorHamPapas)
+	}).css("background-color", colorHamPapas)
 
 	$('#MegaComun').click((e) => {
 		selectComida("comun", "Mega comun", hamburguesasdb[2].precio, e.target.classList[1])
-	}).css("background", colorHamb)
+	}).css("background-color", colorHamb)
 
 	$('#MegaFiambre').click((e) => {
 		selectComida("fiambre", "Mega esp. de fiambre", hamburguesasdb[3].precio, e.target.classList[1])
-	}).css("background", colorHamb)
+	}).css("background-color", colorHamb)
 
 	$('#MegaPapas').click((e) => {
 		selectComida("papas", "Mega esp. de papas", hamburguesasdb[4].precio, e.target.classList[1])
-	}).css("background", colorHamPapas)
+	}).css("background-color", colorHamPapas)
 
 	$('#LomitoComun').click((e) => {
 		selectComida("comun", "Lomito comun", lomitosdb[0].precio, e.target.classList[1])
-	}).css("background", colorSan)
+	}).css("background-color", colorSan)
 
 	$('#LomitoFiambre').click((e) => {
 		selectComida("fiambre", "Lomito esp. de fiambre", lomitosdb[1].precio, e.target.classList[1])
-	}).css("background", colorSan)
+	}).css("background-color", colorSan)
 
 	$('#LomitoPapas').click((e) => {
 		selectComida("papas", "Lomito esp. de papas", lomitosdb[2].precio, e.target.classList[1])
-	}).css("background", colorSaPapas)
+	}).css("background-color", colorSaPapas)
 
 	$('#PizzaComun').click((e) => {
 		selectComida(0, pizzasdb[0].nombre, pizzasdb[0].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzaJamon').click((e) => {
 		selectComida(0, pizzasdb[1].nombre, pizzasdb[1].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzaFugazza').click((e) => {
 		selectComida(0, pizzasdb[2].nombre, pizzasdb[2].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzaCalabresa').click((e) => {
 		selectComida(0, pizzasdb[3].nombre, pizzasdb[3].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzaNapolitana').click((e) => {
 		selectComida(0, pizzasdb[4].nombre, pizzasdb[4].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzaSardina').click((e) => {
 		selectComida(0, pizzasdb[5].nombre, pizzasdb[5].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzanesaP4').click((e) => {
 		selectComida(0, pizzasdb[6].nombre, pizzasdb[6].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#PizzanesaP2').click((e) => {
 		selectComida(0, pizzasdb[7].nombre, pizzasdb[7].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#mediaPizzaComun').click((e) => {
 		selectComida(0, pizzasdb[8].nombre, pizzasdb[8].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#mediaPizzaJamon').click((e) => {
 		selectComida(0, pizzasdb[9].nombre, pizzasdb[9].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#mediaPizzaFugazza').click((e) => {
 		selectComida(0, pizzasdb[10].nombre, pizzasdb[10].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#mediaPizzaCalabresa').click((e) => {
 		selectComida(0, pizzasdb[11].nombre, pizzasdb[11].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#mediaPizzaNapolitana').click((e) => {
 		selectComida(0, pizzasdb[12].nombre, pizzasdb[12].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 	$('#mediaPizzaSardina').click((e) => {
 		selectComida(0, pizzasdb[13].nombre, pizzasdb[13].precio, e.target.classList[1])
-	}).css("background", colorPizzas)
+	}).css("background-color", colorPizzas)
 
 
 	$('#PapasComun').click((e) => {
 		selectComida(0, papasdb[0].nombre, papasdb[0].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#PapasGratinadas').click((e) => {
 		selectComida(0, papasdb[1].nombre, papasdb[1].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#Salchipapas').click((e) => {
 		selectComida(0, papasdb[2].nombre, papasdb[2].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#LomitoPlato').click((e) => {
 		selectComida(0, platosdb[0].nombre, platosdb[0].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#MilanesaNapolitana').click((e) => {
 		selectComida(0, platosdb[1].nombre, platosdb[1].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#MilanesaCaballo').click((e) => {
 		selectComida(0, platosdb[2].nombre, platosdb[2].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#MexicanoP1').click((e) => {
 		selectComida(0, platosdb[3].nombre, platosdb[3].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#MexicanoP2').click((e) => {
 		selectComida(0, platosdb[4].nombre, platosdb[4].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#MilanesaNapolitanaEnsa').click((e) => {
 		selectComida(0, platosdb[5].nombre, platosdb[1].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	$('#MilanesaEnsa').click((e) => {
 		selectComida(0, platosdb[6].nombre, platosdb[2].precio, e.target.classList[1])
-	}).css("background", colorPapas)
+	}).css("background-color", colorPapas)
 
 	let EmpanadasCarne = document.getElementById('EmpanadasCarne')
 		.addEventListener("click", () => { selectComida(0, "Empanada de carne", 600) });
@@ -650,6 +650,28 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		})
 	}
 	const enviarData = async () => {
+		$(".enviar").hide();
+		let lnsRing= document.createElement("div")
+		document.querySelector(".carrito").appendChild(lnsRing)
+		lnsRing.setAttribute("class","lds-ring")
+		let div1= document.createElement("div")
+		lnsRing.appendChild(div1)
+		let div2= document.createElement("div")
+		lnsRing.appendChild(div2)
+		let div3= document.createElement("div")
+		lnsRing.appendChild(div3)
+		let div4= document.createElement("div")
+		lnsRing.appendChild(div4)
+		$(".lds-ring").css({
+		"width":"20px",
+		"height":"20px",
+		"display":"inline-block",
+		"margin-top":"0"
+		})
+		$(".lds-ring div").css({
+			"width":"15px",
+			"height":"15px"
+			})
 		let petiPOST = await fetch("https://apibar-production.up.railway.app/pedidos", {
 			method: "POST",
 			body: JSON.stringify(pedidoFinal),
@@ -658,6 +680,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		let dataPOST = await petiPOST.json();
 		let petiGET = await fetch("https://apibar-production.up.railway.app/pedidos")
 		let dataGET = await petiGET.json();
+		
 		ticketCosina(dataGET[dataGET.length - 1].id, pedidoFinal.cliente, pedidoFinal.detalle)
 		window.location.reload();
 	}
@@ -681,9 +704,6 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 					window.location.href = "cuaderno.html"
 				}
 				else {
-					let number = localStorage.getItem("numero") || 0;
-					number++;
-					localStorage.setItem("numero", number)
 					enviarData();
 				}
 			}

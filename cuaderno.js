@@ -1,4 +1,4 @@
-let output = [], delivery1 = "Maia", delivery2 = "Barbi", delivery3 = "Abel", retiro = "retirado", pagado = "pagado";
+let output = [], delivery1 = "Maia", delivery2 = "Barbi", delivery3 = "Tomi", retiro = "retirado", pagado = "pagado";
 let hidden_delivery1 = [], hidden_delivery2 = [], hidden_delivery3 = [];
 let agregar = document.querySelector(".agregar")
 let table1 = document.querySelector(".table1")
@@ -36,10 +36,45 @@ repartoDelivery3.textContent = delivery3
 repartoCliente1.innerHTML = ``
 repartoCliente2.innerHTML = ``
 repartoCliente3.innerHTML = ``
-importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 20}`
-importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 20}`
-importe3.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 20}`
+importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 25}`
+importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
+importe3.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
 
+
+$(".botonCuaTable3").click(()=>{
+	$(".table3").css({
+		"display":"block",
+		"position": "absolute",
+		"top": "18%",
+		"text-align":"center",
+		"width":"90%"
+	})
+	$(".botonCerrarTable3").css("display","block")
+	$(".botonCerrarTable2").css("display","none")
+	$(".table2").hide()
+})
+$(".botonCerrarTable3").click(()=>{
+	$(".table3").css({
+		"display":"none"
+	})
+})
+$(".botonCuaTable2").click(()=>{
+	$(".table2").css({
+		"display":"block",
+		"position": "absolute",
+		"top": "18%",
+		"text-align":"center",
+		"width":"60%"
+	})
+	$(".botonCerrarTable2").css("display","block")
+	$(".botonCerrarTable3").css("display","none")
+	$(".table3").hide()
+})
+$(".botonCerrarTable2").click(()=>{
+	$(".table2").css({
+		"display":"none"
+	})
+})
 const recibirData = async () => {
 	let petiGETPedidos = await fetch("https://apibar-production.up.railway.app/pedidos")
 	let r = await petiGETPedidos.json()
@@ -165,7 +200,7 @@ const recibirData = async () => {
 				}
 			})
 			viajes1 += parseInt(aregloLS.cantidad);
-			importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 20}`
+			importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 25}`
 		}
 		if (aregloLS.delivery == delivery2) {
 			fila.forEach(item => {
@@ -176,7 +211,7 @@ const recibirData = async () => {
 				}
 			})
 			viajes2 += parseInt(aregloLS.cantidad);
-			importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 20}`
+			importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
 		}
 		if (aregloLS.delivery == delivery3) {
 			fila.forEach(item => {
@@ -187,7 +222,7 @@ const recibirData = async () => {
 				}
 			})
 			viajes3 += parseInt(aregloLS.cantidad);
-			importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * 20}`
+			importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * 25}`
 		}
 		if (aregloLS.delivery == pagado) {
 			fila.forEach(item => {

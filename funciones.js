@@ -65,7 +65,6 @@ let selectComida = function (tipo, nombre, precio, clase) {
 }
 const noneLabel = (label) => {
 	$(".complementos label").hide();
-	$(".complementos").hide();
 
 }
 

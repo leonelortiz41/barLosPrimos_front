@@ -1,193 +1,217 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>punto de venta</title>
 	<link rel="stylesheet" type="text/css" href="estil.css">
+	<meta name="viewport" content="initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/all.min.css">
-	
+
 </head>
+
 <body>
-
-
 	<header>
 		<div class="Encabezado">
 			<h1>Bar Los Primos</h1>
 			<div class="divStock">
-				<label class="stockSan"  style="font-size: 12px;text-align: center;">pan(sandwich)<br><input type="number" id="stockSan" value=""></label>
-				<label class="stockHamb" style="font-size: 12px;text-align: center;">pan(hamburg)<br><input type="number" id="stockHamb" 
-					value=""></label>
-					<label class="stockPapas" style="font-size: 12px;text-align: center;">papas<br><input type="number" id="stockPapas"  value=""></label>
-					<label class="stockPizzas" style="font-size: 12px;text-align: center;">pizzas<br><input type="number" id="stockPizzas"  value=""></label>
-				</div>
-				<nav class="navegador">
-					<output class="impDate"></output>
-					<a href="cuaderno.html" class="cuaderno"><i class="fa-solid fa-book-open"></i> Cuaderno</a>
-				</nav>
+				<label class="stockSan" style="font-size: 12px;text-align: center;">pan(sandwich)<br><input
+						type="number" id="stockSan" value=""></label>
+				<label class="stockHamb" style="font-size: 12px;text-align: center;">pan(hamburg)<br><input
+						type="number" id="stockHamb" value=""></label>
+				<label class="stockPapas" style="font-size: 12px;text-align: center;">papas<br><input type="number"
+						id="stockPapas" value=""></label>
+				<label class="stockPizzas" style="font-size: 12px;text-align: center;">pizzas<br><input type="number"
+						id="stockPizzas" value=""></label>
 			</div>
-		</header>
-		<div class="lds-ring"><h3>Cargando...</h3><div></div><div></div><div></div><div></div></div>
-		
+			<nav class="navegador">
+				<output class="impDate"></output>
+				<a href="cuaderno.html" class="cuaderno"><i class="fa-solid fa-book-open"></i> Cuaderno</a>
+			</nav>
+		</div>
+	</header>
+	<div class="lds-ring">
+		<h3>Cargando...</h3>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
 	<form class="form-date">
 		<h3>Hola!</h3>
 		<h5>Por favor indica la fecha de hoy para iniciar sesion</h5>
-		<input type="date" class="fecha" required >
+		<input type="date" class="fecha" required>
 		<input type="submit" class="iniciarSesion" value="iniciar sesion">
 	</form>
 	<div class="general">
-		
+
 		<div class="Contenedor">
 
-				<a href="#milanesas" id="milanesasHref" class="open"><span>Milanesas</span></a>
-				<a href="#hamburguesas" id="hamburguesasHref" class="open"><span>Hamburguesas</span></a>
-				<a href="#lomitos" id="lomitosHref" class="open"><span>Lomitos</span></a>
-				<a href="#pizzas" id="pizzasHref" class="open"><span>Pizzas</span></a>
-				<a href="#papas" id="papasHref" class="open"><span>Papas</span></a>
-				<a href="#platos" id="platosHref" class="open"><span>Platos</span></a>
-				<!-- <a href="#empanadas" id="empanadasHref" class="open"><span>Empanadas</span></a> -->
-				<a href="#bebidas" id="bebidasHref" class="open"><span>Bebidas</span></a>
-		
-		</div>
-		<div class="elementos">	
-		<div id="milanesas" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas panSan" id="MilanesaComun">Milanesa comun</button>
-				<button class="comidas panSan" id="MilanesaFiambre">Milanesa especial de fiambre</button>
-				<button class="comidas panSaPapas" id="MilanesaPapas">Milanesa especial de papas</button>
-			</ul>
-		</div>
-
-		<div id="hamburguesas" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas panHamPapas" id="JuniorComun">Junior comun</button>
-				<button class="comidas panHamPapas" id="JuniorEspecial">Junior Especial</button>
-				<button class="comidas panHamb" id="MegaComun">Mega comun</button>
-				<button class="comidas panHamb" id="MegaFiambre">Mega especial de fiambre</button>
-				<button class="comidas panHamPapas" id="MegaPapas">Mega especial de papas</button>
-			</ul>
-		</div>
-
-		<div id="lomitos" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas panSan" id="LomitoComun">Lomito comun</button>
-				<button class="comidas panSan" id="LomitoFiambre">Lomito especial de fiambre</button>
-				<button class="comidas panSaPapas" id="LomitoPapas">Lomito especial de papas</button>
-			</ul>
-		</div>
-
-		<div id="pizzas" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas pPizzas" id="PizzaComun">Pizza Comun</button>
-				<button class="comidas pPizzas"  class="media" id="mediaPizzaComun">media P Comun</button>
-				<button class="comidas pPizzas" id="PizzaJamon">Pizza Especial de jamon</button>
-				<button class="comidas pPizzas"  class="media" id="mediaPizzaJamon">media P Especial de jamon</button>
-				<button class="comidas pPizzas" id="PizzaFugazza">Pizza Fugazza</button>
-				<button class="comidas pPizzas" class="media"  id="mediaPizzaFugazza">media P Fugazza</button>
-				<button class="comidas pPizzas" id="PizzaCalabresa">Pizza Calabresa</button>
-				<button class="comidas pPizzas"  class="media" id="mediaPizzaCalabresa">media P Calabresa</button>
-				<button class="comidas pPizzas" id="PizzaNapolitana">Pizza Napolitana</button>
-				<button class="comidas pPizzas"  class="media" id="mediaPizzaNapolitana">media P Napolitana</button>
-				<button class="comidas pPizzas" id="PizzaSardina">Pizza con sardinas</button>
-				<button class="comidas pPizzas"  class="media" id="mediaPizzaSardina">media P con sardinas</button>
-				<button class="comidas pPizzas" id="PizzanesaP4">Pizzanesa p/4 personas</button>
-				<button class="comidas pPizzas" id="PizzanesaP2">Pizzanesa p/2 personas</button>
-			</ul>
-		</div>
-
-		<div id="papas" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas pPapas" id="PapasComun">Papas comun</button>
-				<button class="comidas pPapas" id="PapasGratinadas">Papas gratinadas</button>
-				<button class="comidas pPapas" id="Salchipapas">Salchipapas</button>
-			</ul>
-		</div>
-
-		<div id="platos" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas pPapas" id="LomitoPlato">Lomito al plato</button>
-				<button class="comidas pPapas" id="MilanesaNapolitana">Napolitana</button>
-				<button class="comidas pPapas" id="MilanesaCaballo">Milanesa a caballo</button>
-				<button class="comidas pPapas" id="MexicanoP1">Mexicano p/1 persona</button>
-				<button class="comidas pPapas" id="MexicanoP2">Mexicano p/2 personas</button>
-				<button class="comidas pPapas" id="MilanesaNapolitanaEnsa">Napolitana c/ensalada</button>
-				<button class="comidas pPapas" id="MilanesaEnsa">Milanesa c/ensalada</button>
-			</ul>
-		</div>
-
-		<div id="empanadas" class="menus">
-			<ul  class="nav-items">
-				<button class="comidas" id="EmpanadasCarne">Empanadas de carne</button>
-				<button class="comidas" id="EmpanadasPollo">Empanadas de pollo</button>	
-			</ul>
-		</div>
-
-		<div id="bebidas" class="menus">
-			<ul  class="nav-items">
-				<button  id="Pepsi2L">Pepsi 2L</button>
-				<button  id="Mirinda2L">Mirinda 2L</button>
-				<button  id="Pepsi1-1/4">Pepsi 1 1/4L</button>
-				<button  id="VasoGaseosa">Vaso de gaseosa</button>
-				<button  id="JugoFresh">Jugo fresh</button>
-				<button  id="Secco">Secco 2L</button>
-				<button  id="Coca15L">Coca 1.5L</button>
-				<button  id="LataQuilmes">Lata Quilmes</button>
-			</ul>
-		</div>
+			<a href="#milanesas" id="milanesasHref" class="open"><span>Milanesas</span></a>
+			<a href="#hamburguesas" id="hamburguesasHref" class="open"><span>Hamburguesas</span></a>
+			<a href="#lomitos" id="lomitosHref" class="open"><span>Lomitos</span></a>
+			<a href="#pizzas" id="pizzasHref" class="open"><span>Pizzas</span></a>
+			<a href="#papas" id="papasHref" class="open"><span>Papas</span></a>
+			<a href="#platos" id="platosHref" class="open"><span>Platos</span></a>
+			<!-- <a href="#empanadas" id="empanadasHref" class="open"><span>Empanadas</span></a> -->
+			<a href="#bebidas" id="bebidasHref" class="open"><span>Bebidas</span></a>
 
 		</div>
-		
-			
-		<div id="complementos" class="complementos">
-				<label> <input class="comun" type="checkbox"  id="Mayonesa"><label class="lab" for="Mayonesa">Mayonesa </label> </label><br>
-				<label> <input class="comun" type="checkbox"  id="Savora"><label class="lab" for="Savora">Savora </label> </label><br>
-				<label> <input class="comun" type="checkbox"  id="Lechuga"><label class="lab" for="Lechuga">Lechuga </label> </label><br>
-				<label> <input class="comun" type="checkbox"  id="Tomate"><label class="lab" for="Tomate">Tomate </label> </label><br>
-				<label> <input class="comun" type="checkbox"   id="Aji"><label class="lab" for="Aji">Aji </label> </label><br>
-				<label> <input class="eFiambre" type="checkbox"   id="Queso"><label class="lab" for="Queso">Queso </label> </label><br>
-				<!-- <label> <input class="eFiambre" type="checkbox"   id="Jamon"><label class="lab" for="Jamon">Jamon </label> </label><br> -->
-				<label> <input class="huevo" type="checkbox"   id="Huevo"><label class="lab" for="Huevo">Huevo </label> </label><br>
-				<label> <input class="ePapas" type="checkbox"   id="Papas"><label class="lab" for="Papas">Papas </label> </label>
+		<div class="elementos">
+			<div id="milanesas" class="menus">
+				<ul class="nav-items">
+					<button class="comidas panSan" id="MilanesaComun">Milanesa comun</button>
+					<button class="comidas panSan" id="MilanesaFiambre">Milanesa especial de fiambre</button>
+					<button class="comidas panSaPapas" id="MilanesaPapas">Milanesa especial de papas</button>
+				</ul>
 			</div>
-				
-		<div class="carrito1">
-				<table class="tableOrder">
-				</table>
-		<form class="carrito">
-			<output class="importeOutput"></output>
-				<output class="pedidoEdit"></output>
-			<input type="text" class="cliente" placeholder="cliente" required >
-			<label class="enviar" for="enviar"><input type="submit" id="enviar" hidden=""><i class="fa-solid fa-paper-plane"></i></label>
-		</form>
-			
+
+			<div id="hamburguesas" class="menus">
+				<ul class="nav-items">
+					<button class="comidas panHamPapas" id="JuniorComun">Junior comun</button>
+					<button class="comidas panHamPapas" id="JuniorEspecial">Junior Especial</button>
+					<button class="comidas panHamb" id="MegaComun">Mega comun</button>
+					<button class="comidas panHamb" id="MegaFiambre">Mega especial de fiambre</button>
+					<button class="comidas panHamPapas" id="MegaPapas">Mega especial de papas</button>
+				</ul>
+			</div>
+
+			<div id="lomitos" class="menus">
+				<ul class="nav-items">
+					<button class="comidas panSan" id="LomitoComun">Lomito comun</button>
+					<button class="comidas panSan" id="LomitoFiambre">Lomito especial de fiambre</button>
+					<button class="comidas panSaPapas" id="LomitoPapas">Lomito especial de papas</button>
+				</ul>
+			</div>
+
+			<div id="pizzas" class="menus">
+				<ul class="nav-items">
+					<button class="comidas pPizzas" id="PizzaComun">Pizza Comun</button>
+					<button class="comidas pPizzas" class="media" id="mediaPizzaComun">media P Comun</button>
+					<button class="comidas pPizzas" id="PizzaJamon">Pizza Especial de jamon</button>
+					<button class="comidas pPizzas" class="media" id="mediaPizzaJamon">media P Especial de
+						jamon</button>
+					<button class="comidas pPizzas" id="PizzaFugazza">Pizza Fugazza</button>
+					<button class="comidas pPizzas" class="media" id="mediaPizzaFugazza">media P Fugazza</button>
+					<button class="comidas pPizzas" id="PizzaCalabresa">Pizza Calabresa</button>
+					<button class="comidas pPizzas" class="media" id="mediaPizzaCalabresa">media P Calabresa</button>
+					<button class="comidas pPizzas" id="PizzaNapolitana">Pizza Napolitana</button>
+					<button class="comidas pPizzas" class="media" id="mediaPizzaNapolitana">media P Napolitana</button>
+					<button class="comidas pPizzas" id="PizzaSardina">Pizza con sardinas</button>
+					<button class="comidas pPizzas" class="media" id="mediaPizzaSardina">media P con sardinas</button>
+					<button class="comidas pPizzas" id="PizzanesaP4">Pizzanesa p/4 personas</button>
+					<button class="comidas pPizzas" id="PizzanesaP2">Pizzanesa p/2 personas</button>
+				</ul>
+			</div>
+
+			<div id="papas" class="menus">
+				<ul class="nav-items">
+					<button class="comidas pPapas" id="PapasComun">Papas comun</button>
+					<button class="comidas pPapas" id="PapasGratinadas">Papas gratinadas</button>
+					<button class="comidas pPapas" id="Salchipapas">Salchipapas</button>
+				</ul>
+			</div>
+
+			<div id="platos" class="menus">
+				<ul class="nav-items">
+					<button class="comidas pPapas" id="LomitoPlato">Lomito al plato</button>
+					<button class="comidas pPapas" id="MilanesaNapolitana">Napolitana</button>
+					<button class="comidas pPapas" id="MilanesaCaballo">Milanesa a caballo</button>
+					<button class="comidas pPapas" id="MexicanoP1">Mexicano p/1 persona</button>
+					<button class="comidas pPapas" id="MexicanoP2">Mexicano p/2 personas</button>
+					<button class="comidas pPapas" id="MilanesaNapolitanaEnsa">Napolitana c/ensalada</button>
+					<button class="comidas pPapas" id="MilanesaEnsa">Milanesa c/ensalada</button>
+				</ul>
+			</div>
+
+			<div id="empanadas" class="menus">
+				<ul class="nav-items">
+					<button class="comidas" id="EmpanadasCarne">Empanadas de carne</button>
+					<button class="comidas" id="EmpanadasPollo">Empanadas de pollo</button>
+				</ul>
+			</div>
+
+			<div id="bebidas" class="menus">
+				<ul class="nav-items">
+					<button id="Pepsi2L">Pepsi 2L</button>
+					<button id="Mirinda2L">Mirinda 2L</button>
+					<button id="Pepsi1-1/4">Pepsi 1 1/4L</button>
+					<button id="VasoGaseosa">Vaso de gaseosa</button>
+					<button id="JugoFresh">Jugo fresh</button>
+					<button id="Secco">Secco 2L</button>
+					<button id="Coca15L">Coca 1.5L</button>
+					<button id="LataQuilmes">Lata Quilmes</button>
+				</ul>
+			</div>
+
 		</div>
+
+
+		<div id="complementos" class="complementos">
+			<label> <input class="comun" type="checkbox" id="Mayonesa"><label class="lab" for="Mayonesa">Mayonesa
+				</label> </label><br>
+			<label> <input class="comun" type="checkbox" id="Savora"><label class="lab" for="Savora">Savora </label>
+			</label><br>
+			<label> <input class="comun" type="checkbox" id="Lechuga"><label class="lab" for="Lechuga">Lechuga </label>
+			</label><br>
+			<label> <input class="comun" type="checkbox" id="Tomate"><label class="lab" for="Tomate">Tomate </label>
+			</label><br>
+			<label> <input class="comun" type="checkbox" id="Aji"><label class="lab" for="Aji">Aji </label> </label><br>
+			<label> <input class="eFiambre" type="checkbox" id="Queso"><label class="lab" for="Queso">Queso </label>
+			</label><br>
+			<!-- <label> <input class="eFiambre" type="checkbox"   id="Jamon"><label class="lab" for="Jamon">Jamon </label> </label><br> -->
+			<label> <input class="huevo" type="checkbox" id="Huevo"><label class="lab" for="Huevo">Huevo </label>
+			</label><br>
+			<label> <input class="ePapas" type="checkbox" id="Papas"><label class="lab" for="Papas">Papas </label>
+			</label>
+		</div>
+
 		<div class="aggregations">
 			<input type="submit" class="agregar" value="+">
-			<input  type="checkbox" id="agregadoPapas"><label class="agregadoPapas agg" for="agregadoPapas">+ papas 
-			<input type="number" class="papasCantidad" value="1" disabled>
+			<input type="checkbox" id="agregadoPapas"><label class="agregadoPapas agg" for="agregadoPapas">+ papas
+				<input type="number" class="papasCantidad" value="1" disabled>
 			</label>
-			<input  type="checkbox" id="agregadoHuevo"><label class="agregadoHuevo agg" for="agregadoHuevo">+ huevo 
-			<input type="number" class="huevoCantidad" value="1" disabled>
+			<input type="checkbox" id="agregadoHuevo"><label class="agregadoHuevo agg" for="agregadoHuevo">+ huevo
+				<input type="number" class="huevoCantidad" value="1" disabled>
 			</label>
-			<input  type="checkbox" id="agregadoQueso"><label class="agregadoQueso agg" for="agregadoQueso">+ queso 
+			<input type="checkbox" id="agregadoQueso"><label class="agregadoQueso agg" for="agregadoQueso">+ queso
 			</label>
-			<input  type="checkbox" id="agregadoJamon"><label class="agregadoJamon agg" for="agregadoJamon">+ jamon 
+			<input type="checkbox" id="agregadoJamon"><label class="agregadoJamon agg" for="agregadoJamon">+ jamon
 			</label>
 		</div>
-	
-		
-			
+
+		<div class="carrito1">
+			<table class="tableOrder">
+			</table>
+			<form class="carrito">
+				<output class="pedidoEdit"></output>
+				<output class="importeOutput"></output>
+				<input type="text" class="cliente" placeholder="cliente" required>
+				<label class="enviar" for="enviar"><input type="submit" id="enviar" hidden=""><i
+						class="fa-solid fa-paper-plane"></i></label>
+			</form>
+
+		</div>
+
+
+
 	</div>
 	<div class="templa">
 		<table>
-                    <tr>
-                        <th><p class="numeroTicket"></p></th>
-                        <td><p class="clienteTicket"></p></td>
-                    </tr>
-             
+			<tr>
+				<th>
+					<p class="numeroTicket"></p>
+				</th>
+				<td>
+					<p class="clienteTicket"></p>
+				</td>
+			</tr>
+
 		</table>
 		<form>
 			<p class="detalleTicket"></p>
 		</form>
-        </div>		
+	</div>
 
 
 	</div>
@@ -196,4 +220,5 @@
 	<script type="text/javascript" src="funciones.js"></script>
 	<script type="text/javascript" src="cjava.js"></script>
 </body>
+
 </html>
