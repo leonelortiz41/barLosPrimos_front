@@ -207,8 +207,8 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			cancel.setAttribute("class", "cancelar")
 			cancel.innerHTML = "cancelar"
 			let encabezado = document.querySelector(".Encabezado")
-			encabezado.innerHTML = `<h2>Sobreescribiendo pedido...</h2> 
-								<p><br>nro: ${JSON.parse(edit).id}<br>cliente: ${JSON.parse(edit).cliente}</p>`
+			encabezado.innerHTML = `<h2 class="sobreescribiendo">Sobreescribiendo pedido...</h2> 
+								<p class="sobreesP"><br>nro: ${JSON.parse(edit).id}<br>cliente: ${JSON.parse(edit).cliente}</p>`
 			encabezado.appendChild(cancel)
 			$(cancel).click(function () {
 				localStorage.removeItem("edit")
@@ -651,27 +651,27 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	}
 	const enviarData = async () => {
 		$(".enviar").hide();
-		let lnsRing= document.createElement("div")
+		let lnsRing = document.createElement("div")
 		document.querySelector(".carrito").appendChild(lnsRing)
-		lnsRing.setAttribute("class","lds-ring")
-		let div1= document.createElement("div")
+		lnsRing.setAttribute("class", "lds-ring")
+		let div1 = document.createElement("div")
 		lnsRing.appendChild(div1)
-		let div2= document.createElement("div")
+		let div2 = document.createElement("div")
 		lnsRing.appendChild(div2)
-		let div3= document.createElement("div")
+		let div3 = document.createElement("div")
 		lnsRing.appendChild(div3)
-		let div4= document.createElement("div")
+		let div4 = document.createElement("div")
 		lnsRing.appendChild(div4)
 		$(".lds-ring").css({
-		"width":"20px",
-		"height":"20px",
-		"display":"inline-block",
-		"margin-top":"0"
+			"width": "20px",
+			"height": "20px",
+			"display": "inline-block",
+			"margin-top": "0"
 		})
 		$(".lds-ring div").css({
-			"width":"15px",
-			"height":"15px"
-			})
+			"width": "15px",
+			"height": "15px"
+		})
 		let petiPOST = await fetch("https://apibar-production.up.railway.app/pedidos", {
 			method: "POST",
 			body: JSON.stringify(pedidoFinal),
@@ -680,9 +680,25 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		let dataPOST = await petiPOST.json();
 		let petiGET = await fetch("https://apibar-production.up.railway.app/pedidos")
 		let dataGET = await petiGET.json();
-		
-		ticketCosina(dataGET[dataGET.length - 1].id, pedidoFinal.cliente, pedidoFinal.detalle)
-		window.location.reload();
+		if (window.screen.width > 880) {
+			ticketCosina(dataGET[dataGET.length - 1].id, pedidoFinal.cliente, pedidoFinal.detalle)
+			window.location.reload();
+		}
+		else {
+			$(".general").hide()
+			let pedidoEnviado = document.createElement("h1")
+			pedidoEnviado.innerHTML = "pedido enviado correctamente"
+			document.body.appendChild(pedidoEnviado)
+			$(pedidoEnviado).css({
+				"color": "#33aa33",
+				"display": "block",
+				"text-align": "center",
+				"margin": "auto",
+				"background": "#080808",
+				"border-radius": "18px"
+			})
+			setTimeout(() => { window.location.reload(); }, 1080)
+		}
 	}
 	carrito.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -694,14 +710,59 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 				actualAFinal_detalle()
 				pedidoFinal.cliente = cliente.value;
 				if (edit != null) {
-					fetch(`https://apibar-production.up.railway.app/pedidos/${JSON.parse(edit).id}`, {
-						method: "PUT",
-						body: JSON.stringify(pedidoFinal),
-						headers: { "content-type": "application/json" }
-					})
-					ticketCosina(JSON.parse(edit).id, pedidoFinal.cliente, pedidoFinal.detalle)
-					localStorage.removeItem("edit")
-					window.location.href = "cuaderno.html"
+					const peticionPut = async () => {
+						$(".enviar").hide();
+						let lnsRing = document.createElement("div")
+						document.querySelector(".carrito").appendChild(lnsRing)
+						lnsRing.setAttribute("class", "lds-ring")
+						let div1 = document.createElement("div")
+						lnsRing.appendChild(div1)
+						let div2 = document.createElement("div")
+						lnsRing.appendChild(div2)
+						let div3 = document.createElement("div")
+						lnsRing.appendChild(div3)
+						let div4 = document.createElement("div")
+						lnsRing.appendChild(div4)
+						$(".lds-ring").css({
+							"width": "20px",
+							"height": "20px",
+							"display": "inline-block",
+							"margin-top": "0"
+						})
+						$(".lds-ring div").css({
+							"width": "15px",
+							"height": "15px"
+						})
+						const resPut = await fetch(`https://apibar-production.up.railway.app/pedidos/${JSON.parse(edit).id}`, {
+							method: "PUT",
+							body: JSON.stringify(pedidoFinal),
+							headers: { "content-type": "application/json" }
+						})
+						const dataPut = await resPut.json();
+						if (window.screen.width > 880) {
+							ticketCosina(JSON.parse(edit).id, pedidoFinal.cliente, pedidoFinal.detalle)
+							window.location.href = "cuaderno.html"
+						}
+						else {
+							$(".general").hide()
+							let pedidoEnviado = document.createElement("h1")
+							pedidoEnviado.innerHTML = "pedido editado correctamente"
+							document.body.appendChild(pedidoEnviado)
+							$(pedidoEnviado).css({
+								"color": "#33aa33",
+								"display": "block",
+								"text-align": "center",
+								"margin": "auto",
+								"background": "#080808",
+								"border-radius": "18px"
+							})
+							setTimeout(() => { window.location.href = "cuaderno.html" }, 1080)
+						}
+						localStorage.removeItem("edit")
+						
+					}
+					peticionPut();
+
 				}
 				else {
 					enviarData();

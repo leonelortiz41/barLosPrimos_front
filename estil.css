@@ -1040,7 +1040,7 @@ nav a {
 	.table1 {
 		display: block;
 		width: 100%;
-		height: 300px;
+		height: 469px;
 		font-size: 12px;
 		margin: 1px;
 	}
@@ -1097,6 +1097,7 @@ nav a {
 	}
 	.contein{width: 50%;}
 	.contAgreg {
+		margin-top: 10px;
 		display: block;
 		width: 100%;
 	}
@@ -1107,5 +1108,25 @@ nav a {
 	.cerrarYCuaderno button{
 		height: 33px;
 		padding: 10px;
+	}
+	.sobreescribiendo{
+		font-size: 20px;
+		display: block;
+		width: 99%;
+		margin-bottom: 0px;
+	}
+	.sobreesP{
+		font-size: 13px;
+		margin-top: 1px;
+		display: inline-block;
+		text-align: left;
+		justify-content: center;
+	}
+	.Encabezado .cancelar{
+		margin-top: 3px;
+		display: inline-block;
+		text-align: center;
+		align-items: center;
+		vertical-align: top;
 	}
 }
