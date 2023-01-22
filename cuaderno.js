@@ -41,38 +41,38 @@ importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
 importe3.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
 
 
-$(".botonCuaTable3").click(()=>{
+$(".botonCuaTable3").click(() => {
 	$(".table3").css({
-		"display":"block",
+		"display": "block",
 		"position": "absolute",
 		"top": "18%",
-		"text-align":"center",
-		"width":"90%"
+		"text-align": "center",
+		"width": "90%"
 	})
-	$(".botonCerrarTable3").css("display","block")
-	$(".botonCerrarTable2").css("display","none")
+	$(".botonCerrarTable3").css("display", "block")
+	$(".botonCerrarTable2").css("display", "none")
 	$(".table2").hide()
 })
-$(".botonCerrarTable3").click(()=>{
+$(".botonCerrarTable3").click(() => {
 	$(".table3").css({
-		"display":"none"
+		"display": "none"
 	})
 })
-$(".botonCuaTable2").click(()=>{
+$(".botonCuaTable2").click(() => {
 	$(".table2").css({
-		"display":"block",
+		"display": "block",
 		"position": "absolute",
 		"top": "18%",
-		"text-align":"center",
-		"width":"60%"
+		"text-align": "center",
+		"width": "60%"
 	})
-	$(".botonCerrarTable2").css("display","block")
-	$(".botonCerrarTable3").css("display","none")
+	$(".botonCerrarTable2").css("display", "block")
+	$(".botonCerrarTable3").css("display", "none")
 	$(".table3").hide()
 })
-$(".botonCerrarTable2").click(()=>{
+$(".botonCerrarTable2").click(() => {
 	$(".table2").css({
-		"display":"none"
+		"display": "none"
 	})
 })
 const recibirData = async () => {
@@ -144,13 +144,39 @@ const recibirData = async () => {
 
 	let celdaTotal = document.createElement("td")
 	celdaTotal.setAttribute("class", "celdaTotal")
-	celdaTotal.innerHTML = `Importe total :   $${suma}`
 	table1.appendChild(celdaTotal)
+	let pceldaTotal = document.createElement("p")
+	pceldaTotal.setAttribute("class", "pceldaTotal")
+	pceldaTotal.innerHTML = `Importe total :   *****`
+	console.log(pceldaTotal)
+	celdaTotal.appendChild(pceldaTotal)
+	let eye = document.createElement("button")
+	eye.setAttribute("class", "eye")
+	eye.innerHTML=`<i class="fa-solid fa-eye"></i>`
+	celdaTotal.appendChild(eye)
+	eye.addEventListener("click", () => {
+		if (pceldaTotal.innerHTML == `Importe total :   *****`) pceldaTotal.innerHTML = `Importe total :   $${suma}`;
+		else pceldaTotal.innerHTML = `Importe total :   *****`;
+	})
+
 
 	let aregloLS = JSON.parse(localStorage.getItem("pedidosEnViaje")) || []
 	let aregloViajeLS = JSON.parse(localStorage.getItem("pedidosViaje")) || []
+	let pedidoEntregado = (delivery, viajes) => {
+		if (r.id == item.children[7].textContent) {
+			item.children[5].innerHTML = `${delivery}`
+			item.children[5].style = "box-shadow: inset 8px -1px 10px -6px #fff;"
+			item.children[5].style.background = " linear-gradient(to right, #226425, #010101)";
+		}
+		viajes += parseInt(aregloLS.cantidad);
+		importe1.innerHTML = `cantidad: ${viajes}<br>$${viajes * 25}`
+	}
 	r.forEach(re => {
 		fila.forEach(item => {
+			if (re.statu == `entregado_${delivery1}`) {
+				pedidoEntregado(delivery1, viajes1)
+
+			}
 			if (re.pj == "1") {
 				if (re.id == item.children[0].textContent) {
 					item.children[3].innerHTML += ` <b>(PJ)</b>`
@@ -176,12 +202,12 @@ const recibirData = async () => {
 					item.children[5].children[1].addEventListener("click", () => {
 						item.children[5].children[1].remove();
 						const petitPUT = async () => {
-							let da= await fetch(`https://apibar-production.up.railway.app/pagado/${item.children[0].textContent}`, {
+							let da = await fetch(`https://apibar-production.up.railway.app/pagado/${item.children[0].textContent}`, {
 								method: "PUT",
 								body: '{"pagado":0}',
 								headers: { "content-type": "application/json" }
 							})
-							let data= await da.json();
+							let data = await da.json();
 							window.location.reload()
 						}
 						petitPUT();
@@ -272,7 +298,8 @@ const recibirData = async () => {
 					item.children[5].style.background = " linear-gradient(to right, #816907, #010101)";
 					repartoCliente1.innerHTML += `${aregloViajeLS.cliente}<br>`;
 					ejecucion1 = true
-					printPrint(ejecucion1, 0, 4, hidden_delivery1, aregloLS);
+					console.log(r)
+					printPrint(ejecucion1, 0, 4, hidden_delivery1, aregloLS, r);
 					borraDelivery(ejecucion1, 0, 7, delivery1);
 					hidden_delivery1[hd1] = item;
 					hd1++;
@@ -296,7 +323,7 @@ const recibirData = async () => {
 					item.children[5].style.background = " linear-gradient(to right, #816907, #010101)";
 					repartoCliente2.innerHTML += `${aregloViajeLS.cliente}<br>`;
 					ejecucion2 = true
-					printPrint(ejecucion2, 1, 5, hidden_delivery2, aregloLS);
+					printPrint(ejecucion2, 1, 5, hidden_delivery2, aregloLS, r);
 					borraDelivery(ejecucion2, 1, 8, delivery2);
 					hidden_delivery2[hd2] = item;
 					hd2++;
@@ -320,7 +347,7 @@ const recibirData = async () => {
 					item.children[5].style.background = " linear-gradient(to right, #816907, #010101)";
 					repartoCliente3.innerHTML += `${aregloViajeLS.cliente}<br>`;
 					ejecucion3 = true
-					printPrint(ejecucion3, 2, 31, hidden_delivery3, aregloLS);
+					printPrint(ejecucion3, 2, 31, hidden_delivery3, aregloLS, r);
 					borraDelivery(ejecucion3, 2, 17, delivery3);
 					hidden_delivery3[hd3] = item;
 					hd3++;
@@ -444,7 +471,8 @@ const recibirData = async () => {
 							item.children[5].children[0].children[6].addEventListener("click", () => {
 								for (var i = 0; i <= r.length - 1; i++) {
 									if (item.children[0].textContent == r[i].id) {
-										ticketCosina(item.children[0].textContent, item.children[2].textContent, r[i].detalleTicket)
+										if (window.screen.width > 880)
+											ticketCosina(item.children[0].textContent, item.children[2].textContent, r[i].detalleTicket);
 									}
 								}
 							});
@@ -470,7 +498,7 @@ const recibirData = async () => {
 
 								for (var i = 0; i <= fila.length - 1; i++) {
 									if (fila[i].children[0].textContent == item.children[0].textContent) {
-										ticketCliente(dadaa[i], item.children[3].textContent)
+										if (window.screen.width > 880) ticketCliente(dadaa[i], item.children[3].textContent);
 									}
 								}
 							});

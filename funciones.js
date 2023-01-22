@@ -99,30 +99,6 @@ const pintar = (hidden, color) => {
 		})
 	})
 }
-const obtenedorDeNro = async () => {
-	let fet = await fetch("https://apibar-production.up.railway.app/pedidos");
-	let resultado = await fet.json();
-	return resultado[resultado.length - 1].id
-
-}
-function imprim1(imp1) {
-	let pagad = JSON.parse(localStorage.getItem("pedidosEnViaje")) || []
-	pagad.forEach(arr => {
-		for (let i = 0; i < imp1.children[1].children[0].children.length; i++) {
-			if (imp1.children[1].children[0].children[i].children[1].textContent == `$${arr.importe}`) {
-				imp1.children[1].children[0].children[i].children[1].textContent = "pagado"
-			}
-		}
-	})
-	var printContents = imp1.innerHTML;
-	w = window.open();
-	w.document.write(printContents);
-	w.document.close(); // necessary for IE >= 10
-	w.focus(); // necessary for IE >= 10
-	w.print();
-	w.close();
-	return true;
-}
 
 const darOk = (ejecucion, delivery, hidden_delivery, viajes, repartoCliente, hd, importe, ar1, ar2, r) => {
 	if (ejecucion == true) {
@@ -131,7 +107,6 @@ const darOk = (ejecucion, delivery, hidden_delivery, viajes, repartoCliente, hd,
 		for (var i = 0; i < viaj.length; i++) {
 			if (viaj[i].delivery != delivery) {
 				arraux.push(viaj[i])
-				console.log(viaj[i])
 			}
 		}
 		if (arraux.length >= 1) {
@@ -169,18 +144,18 @@ const agregarViaje = (fila, hidden_delivery, ejecucion, repartoCliente, delivery
 		}
 		if (i == hidden_delivery.length - 1) ejecucion = true;
 	}
-	printPrint(ejecucion, ar1, ar2, hidden_delivery, arr);
+	printPrint(ejecucion, ar1, ar2, hidden_delivery,arr, r);
 	borraDelivery(ejecucion, ar1, ar3, delivery);
 }
 
-const printPrint = (ejecucion, ar1, ar2, hidden_delivery, arr) => {
+const printPrint = (ejecucion, ar1, ar2, hidden_delivery,arr, r) => {
 	if (ejecucion == true) {
 		if (botonDeli[ar2] == undefined) {
 			creaBoton(botonDeli, ar2, `<i class="fa-solid fa-print"></i>`, "imp");
 			table3.children[0].children[ar1].children[2].appendChild(botonDeli[ar2])
 		}
 		table3.children[0].children[ar1].children[2].children[1].addEventListener("click", () => {
-			ticketDelivery(hidden_delivery, arr)
+			ticketDelivery(hidden_delivery, r)
 		})
 
 
@@ -192,7 +167,6 @@ const borraDelivery = (ejecucion, ar1, ar3, delivery) => {
 			creaBoton(botonDeli, ar3, `X`, "borr");
 			table3.children[0].children[ar1].children[2].appendChild(botonDeli[ar3])
 		}
-		// console.log(table3.children[0].children[ar1].children[2].children[2])
 
 		table3.children[0].children[ar1].children[2].children[2].addEventListener("click", () => {
 			let arr = JSON.parse(localStorage.getItem("pedidosViaje")) || [];
@@ -246,28 +220,30 @@ const setViajeLS = (r, delivery) => {
 
 
 const cerrarSesion = () => {
-
-	fetch("https://apibar-production.up.railway.app/pedidos", {
-		method: "DELETE"
-	})
-	$(".table1").hide()
-	$(".table2").hide()
-	$(".table3").hide()
-	$(".cerrarSesion").hide()
-	$(".imprCuaderno").hide()
-	$(".contAgreg").hide()
-	let sesionEnd = document.createElement("h1")
-	sesionEnd.innerHTML = "Sesion terminada"
-	document.body.appendChild(sesionEnd)
-	$(sesionEnd).css({
-		"color": "#f95",
-		"display": "flex",
-		"text-align":"center",
-		"margin": "auto",
-		"background": "#080808",
-		"border-radius": "18px"
-	})
-	setTimeout(() => { window.location.href = "index.html" }, 2010)
+	let option=confirm("esta seguro de cerrar sesion? recuerde haber guardado el cuaderno antes.")
+	if(option==true){
+		fetch("https://apibar-production.up.railway.app/pedidos", {
+			method: "DELETE"
+		})
+		$(".table1").hide()
+		$(".table2").hide()
+		$(".table3").hide()
+		$(".cerrarSesion").hide()
+		$(".imprCuaderno").hide()
+		$(".contAgreg").hide()
+		let sesionEnd = document.createElement("h1")
+		sesionEnd.innerHTML = "Sesion terminada"
+		document.body.appendChild(sesionEnd)
+		$(sesionEnd).css({
+			"color": "#f95",
+			"display": "flex",
+			"text-align":"center",
+			"margin": "auto",
+			"background": "#080808",
+			"border-radius": "18px"
+		})
+		setTimeout(() => { window.location.href = "index.html" }, 2010)
+	}
 }
 const ticketCosina = (numero, clienteP, detalle) => {
 	w = window.open()
@@ -309,10 +285,9 @@ const ticketCosina = (numero, clienteP, detalle) => {
 	w.close()
 }
 
-const ticketDelivery = (hidden_delivery, arr) => {
+const ticketDelivery = (hidden_delivery, r) => {
 	w = window.open()
 
-	let pagaJusto = localStorage.getItem("pagaJusto") || [];
 	let div = w.document.createElement('div');
 	w.document.body.appendChild(div);
 
@@ -327,19 +302,13 @@ const ticketDelivery = (hidden_delivery, arr) => {
 		fila[i].appendChild(celdaCliente[i]);
 		celdaImporte[i] = w.document.createElement('td');
 		fila[i].appendChild(celdaImporte[i]);
-		console.log(arr)
 		celdaCliente[i].innerHTML = hidden_delivery[i].children[2].textContent;
 		celdaImporte[i].innerHTML = `${hidden_delivery[i].children[3].textContent}`;
-		for (let j = 0; j < arr.length; j++) {
-			if (arr[j].id == hidden_delivery[i].children[0].textContent) {
-				if (arr[j].delivery == "pagado") {
+		for (let j = 0; j < r.length; j++) {
+			if (r[j].id == hidden_delivery[i].children[0].textContent) {
+				if (r[j].pagado == "1") {
 					celdaImporte[i].innerHTML = ` pagado`;
 				}
-			}
-		}
-		for (let j = 0; j < pagaJusto.length; j++) {
-			if (pagaJusto.id == hidden_delivery[i].children[0].textContent) {
-				celdaImporte[i].innerHTML += ` (PJ)`
 			}
 		}
 	}

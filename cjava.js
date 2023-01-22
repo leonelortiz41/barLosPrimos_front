@@ -103,13 +103,58 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	if ((stockHamb > 0 && stockHamb <= 10) || stockPapas > 0 && stockPapas <= 10) colorHamPapas = "#a97915"
 	if (stockHamb == 0 || stockPapas == 0) colorHamPapas = "#a92222";
 
-	milanesasdb = await fetch("https://apibar-production.up.railway.app/milanesas"); milanesasdb = await milanesasdb.json();
-	lomitosdb = await fetch("https://apibar-production.up.railway.app/lomitos"); lomitosdb = await lomitosdb.json();
-	hamburguesasdb = await fetch("https://apibar-production.up.railway.app/hamburguesas"); hamburguesasdb = await hamburguesasdb.json();
-	pizzasdb = await fetch("https://apibar-production.up.railway.app/pizzas"); pizzasdb = await pizzasdb.json();
-	papasdb = await fetch("https://apibar-production.up.railway.app/papas"); papasdb = await papasdb.json();
-	platosdb = await fetch("https://apibar-production.up.railway.app/platos"); platosdb = await platosdb.json();
-	bebidasdb = await fetch("https://apibar-production.up.railway.app/bebidas"); bebidasdb = await bebidasdb.json();
+
+	let milanesasLS = localStorage.getItem("milanesasLS") || null;
+	let lomitosLS = localStorage.getItem("lomitosLS") || null;
+	let hamburguesasLS = localStorage.getItem("hamburguesasLS") || null;
+	let pizzasLS = localStorage.getItem("pizzasLS") || null;
+	let papasLS = localStorage.getItem("papasLS") || null;
+	let platosLS = localStorage.getItem("platosLS") || null;
+	let bebidasLS = localStorage.getItem("bebidasLS") || null;
+	if (milanesasLS == null) {
+		milanesasdb = await fetch("https://apibar-production.up.railway.app/milanesas"); milanesasdb = await milanesasdb.json();
+		localStorage.setItem("milanesasLS", JSON.stringify(milanesasdb));
+	}
+	else milanesasdb = JSON.parse(milanesasLS);
+
+	if (lomitosLS == null) {
+		lomitosdb = await fetch("https://apibar-production.up.railway.app/lomitos"); lomitosdb = await lomitosdb.json();
+		localStorage.setItem("lomitosLS", JSON.stringify(lomitosdb));
+	}
+	else lomitosdb = JSON.parse(lomitosLS);
+
+
+	if (hamburguesasLS == null) {
+		hamburguesasdb = await fetch("https://apibar-production.up.railway.app/hamburguesas"); hamburguesasdb = await hamburguesasdb.json();
+		localStorage.setItem("hamburguesasLS", JSON.stringify(hamburguesasdb));
+	}
+	else hamburguesasdb = JSON.parse(hamburguesasLS);
+
+
+	if (pizzasLS == null) {
+		pizzasdb = await fetch("https://apibar-production.up.railway.app/pizzas"); pizzasdb = await pizzasdb.json();
+		localStorage.setItem("pizzasLS", JSON.stringify(pizzasdb));
+	}
+	else pizzasdb = JSON.parse(pizzasLS);
+
+	if (papasLS == null) {
+		papasdb = await fetch("https://apibar-production.up.railway.app/papas"); papasdb = await papasdb.json();
+		localStorage.setItem("papasLS", JSON.stringify(papasdb));
+	}
+	else papasdb = JSON.parse(papasLS);
+
+	if (platosLS == null) {
+		platosdb = await fetch("https://apibar-production.up.railway.app/platos"); platosdb = await platosdb.json();
+		localStorage.setItem("platosLS", JSON.stringify(platosdb));
+	}
+	else platosdb = JSON.parse(platosLS);
+
+	
+	if (bebidasLS == null) {
+		bebidasdb = await fetch("https://apibar-production.up.railway.app/bebidas"); bebidasdb = await bebidasdb.json();
+		localStorage.setItem("bebidasLS", JSON.stringify(bebidasdb));
+	}
+	else bebidasdb = JSON.parse(bebidasLS);
 	ldsring.remove();
 
 	detalleTicket.innerHTML = ""
@@ -759,7 +804,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 							setTimeout(() => { window.location.href = "cuaderno.html" }, 1080)
 						}
 						localStorage.removeItem("edit")
-						
+
 					}
 					peticionPut();
 
