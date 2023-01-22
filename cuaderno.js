@@ -155,8 +155,14 @@ const recibirData = async () => {
 	eye.innerHTML=`<i class="fa-solid fa-eye"></i>`
 	celdaTotal.appendChild(eye)
 	eye.addEventListener("click", () => {
-		if (pceldaTotal.innerHTML == `Importe total :   *****`) pceldaTotal.innerHTML = `Importe total :   $${suma}`;
-		else pceldaTotal.innerHTML = `Importe total :   *****`;
+		if (pceldaTotal.innerHTML == `Importe total :   *****`) {
+			pceldaTotal.innerHTML = `Importe total :   $${suma}`;
+			eye.innerHTML=`<i class="fa-solid fa-eye-slash"></i>`
+		}
+		else{
+			pceldaTotal.innerHTML = `Importe total :   *****`;
+			eye.innerHTML=`<i class="fa-solid fa-eye"></i>`
+		}
 	})
 
 
