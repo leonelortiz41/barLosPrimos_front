@@ -82,7 +82,7 @@ const recibirFecha = async () => {
 	else {
 		$(".form-date").hide();
 		$(".general").show();
-		$(".impDate").html(`<h2>${JSON.parse(fechaLS).fecha}</h2>`);
+		$(".impDate").html(`<h2>${JSON.parse(fechaLS)[0].fecha}</h2>`);
 	}
 }
 recibirFecha();

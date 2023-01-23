@@ -84,7 +84,7 @@ if (fechaLS == null) {
 		fechaLS = dataFecha;
 	}
 }
-$(".impDate").html(`<h2>${JSON.parse(fechaLS).fecha}</h2>`)
+$(".impDate").html(`<h2>${JSON.parse(fechaLS)[0].fecha}</h2>`)
 const recibirData = async () => {
 	let petiGETPedidos = await fetch("https://apibar-production.up.railway.app/pedidos")
 	let r = await petiGETPedidos.json()
