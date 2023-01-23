@@ -53,7 +53,7 @@ const recibirFecha = async () => {
 			const dataFecha = await fechaGET.json();
 			fechaLS = dataFecha;
 			console.log(fechaLS)
-			if (fechaLS.length==0) {
+			if (fechaLS.length == 0) {
 				$(".general").hide()
 				$(".form-date").show();
 				$(".navegador").hide()
@@ -708,6 +708,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			})
 		})
 	}
+	let env=false;
 	const enviarData = async () => {
 		$(".enviar").hide();
 		let lnsRing = document.createElement("div")
@@ -761,85 +762,90 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	}
 	carrito.addEventListener("submit", (e) => {
 		e.preventDefault();
-		try {
-			actualAFinal_pedido()
-			if (pedidoFinal.pedido.length != 0) {
-				sumadorDeImportes();
-				sumadorDeCant();
-				actualAFinal_detalle()
-				pedidoFinal.cliente = cliente.value;
-				if (edit != null) {
-					const peticionPut = async () => {
-						$(".enviar").hide();
-						let lnsRing = document.createElement("div")
-						document.querySelector(".carrito").appendChild(lnsRing)
-						lnsRing.setAttribute("class", "lds-ring")
-						let div1 = document.createElement("div")
-						lnsRing.appendChild(div1)
-						let div2 = document.createElement("div")
-						lnsRing.appendChild(div2)
-						let div3 = document.createElement("div")
-						lnsRing.appendChild(div3)
-						let div4 = document.createElement("div")
-						lnsRing.appendChild(div4)
-						$(".lds-ring").css({
-							"width": "20px",
-							"height": "20px",
-							"display": "inline-block",
-							"margin-top": "0"
-						})
-						$(".lds-ring div").css({
-							"width": "15px",
-							"height": "15px"
-						})
-						const resPut = await fetch(`https://apibar-production.up.railway.app/pedidos/${JSON.parse(edit).id}`, {
-							method: "PUT",
-							body: JSON.stringify(pedidoFinal),
-							headers: { "content-type": "application/json" }
-						})
-						const dataPut = await resPut.json();
-						if (window.screen.width > 880) {
-							ticketCosina(JSON.parse(edit).id, pedidoFinal.cliente, pedidoFinal.detalle)
-							window.location.href = "cuaderno.html"
-						}
-						else {
-							$(".general").hide()
-							let pedidoEnviado = document.createElement("h1")
-							pedidoEnviado.innerHTML = "pedido editado correctamente"
-							document.body.appendChild(pedidoEnviado)
-							$(pedidoEnviado).css({
-								"color": "#33aa33",
-								"display": "block",
-								"text-align": "center",
-								"margin": "auto",
-								"background": "#080808",
-								"border-radius": "18px"
+		if (env == false) {
+			env = true;
+
+
+			try {
+				actualAFinal_pedido()
+				if (pedidoFinal.pedido.length != 0) {
+					sumadorDeImportes();
+					sumadorDeCant();
+					actualAFinal_detalle()
+					pedidoFinal.cliente = cliente.value;
+					if (edit != null) {
+						const peticionPut = async () => {
+							$(".enviar").hide();
+							let lnsRing = document.createElement("div")
+							document.querySelector(".carrito").appendChild(lnsRing)
+							lnsRing.setAttribute("class", "lds-ring")
+							let div1 = document.createElement("div")
+							lnsRing.appendChild(div1)
+							let div2 = document.createElement("div")
+							lnsRing.appendChild(div2)
+							let div3 = document.createElement("div")
+							lnsRing.appendChild(div3)
+							let div4 = document.createElement("div")
+							lnsRing.appendChild(div4)
+							$(".lds-ring").css({
+								"width": "20px",
+								"height": "20px",
+								"display": "inline-block",
+								"margin-top": "0"
 							})
-							setTimeout(() => { window.location.href = "cuaderno.html" }, 1080)
+							$(".lds-ring div").css({
+								"width": "15px",
+								"height": "15px"
+							})
+							const resPut = await fetch(`https://apibar-production.up.railway.app/pedidos/${JSON.parse(edit).id}`, {
+								method: "PUT",
+								body: JSON.stringify(pedidoFinal),
+								headers: { "content-type": "application/json" }
+							})
+							const dataPut = await resPut.json();
+							if (window.screen.width > 880) {
+								ticketCosina(JSON.parse(edit).id, pedidoFinal.cliente, pedidoFinal.detalle)
+								window.location.href = "cuaderno.html"
+							}
+							else {
+								$(".general").hide()
+								let pedidoEnviado = document.createElement("h1")
+								pedidoEnviado.innerHTML = "pedido editado correctamente"
+								document.body.appendChild(pedidoEnviado)
+								$(pedidoEnviado).css({
+									"color": "#33aa33",
+									"display": "block",
+									"text-align": "center",
+									"margin": "auto",
+									"background": "#080808",
+									"border-radius": "18px"
+								})
+								setTimeout(() => { window.location.href = "cuaderno.html" }, 1080)
+							}
+							localStorage.removeItem("edit")
+
 						}
-						localStorage.removeItem("edit")
+						peticionPut();
 
 					}
-					peticionPut();
-
+					else {
+						enviarData();
+					}
 				}
 				else {
-					enviarData();
+					alert("no se ingreso ningun pedido")
+					window.location.reload();
 				}
+				$(".enviar").click(function () { $(".enviar").hide() })
 			}
-			else {
-				alert("no se ingreso ningun pedido")
-				window.location.reload();
+			catch (err) {
+				alert("a ocurrido un error")
 			}
-			$(".enviar").click(function () { $(".enviar").hide() })
+			if (divStock.children[0].children[1].value != "") localStorage.setItem("stockSan", divStock.children[0].children[1].value - sumaPanSan);
+			if (divStock.children[1].children[1].value != "") localStorage.setItem("stockHamb", divStock.children[1].children[1].value - sumaPanHamb);
+			if (divStock.children[2].children[1].value != "") localStorage.setItem("stockPapas", divStock.children[2].children[1].value - sumapPapas);
+			if (divStock.children[3].children[1].value != "") localStorage.setItem("stockPizzas", divStock.children[3].children[1].value - sumapPizzas);
 		}
-		catch (err) {
-			alert("a ocurrido un error")
-		}
-		if (divStock.children[0].children[1].value != "") localStorage.setItem("stockSan", divStock.children[0].children[1].value - sumaPanSan);
-		if (divStock.children[1].children[1].value != "") localStorage.setItem("stockHamb", divStock.children[1].children[1].value - sumaPanHamb);
-		if (divStock.children[2].children[1].value != "") localStorage.setItem("stockPapas", divStock.children[2].children[1].value - sumapPapas);
-		if (divStock.children[3].children[1].value != "") localStorage.setItem("stockPizzas", divStock.children[3].children[1].value - sumapPizzas);
 	})
 	document.addEventListener("keydown", () => {
 		if (event.keyCode == 17) {

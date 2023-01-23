@@ -472,9 +472,28 @@ h1 {
 
 .celdaComida {
 	width: 62%;
+	overflow-y: scroll;
+	height: auto;
 	text-align: left;
 }
-
+.celdaComida::-webkit-scrollbar {
+	background: #121212;
+	width: 7px;
+	border-radius: 4px;
+}
+.celdaComida::-webkit-scrollbar-thumb {
+	background: #918181;
+	border-radius: 4px;
+}
+body::-webkit-scrollbar {
+	background: #121212;
+	width: 7px;
+	border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb {
+	background: #e1a131;
+	border-radius: 4px;
+}
 .celdaPrecio {
 	width: 16%;
 	color: #55feae;

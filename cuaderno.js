@@ -1,4 +1,5 @@
 let output = [], delivery1 = "Maia", delivery2 = "Barbi", delivery3 = "Tomi", retiro = "retirado", pagado = "pagado";
+const comision=25;
 let hidden_delivery1 = [], hidden_delivery2 = [], hidden_delivery3 = [];
 let agregar = document.querySelector(".agregar")
 let table1 = document.querySelector(".table1")
@@ -36,10 +37,9 @@ repartoDelivery3.textContent = delivery3
 repartoCliente1.innerHTML = ``
 repartoCliente2.innerHTML = ``
 repartoCliente3.innerHTML = ``
-importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 25}`
-importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
-importe3.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
-
+importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * comision}`
+importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
+importe3.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
 
 $(".botonCuaTable3").click(() => {
 	$(".table3").css({
@@ -181,7 +181,7 @@ const recibirData = async () => {
 			item.children[5].style.background = " linear-gradient(to right, #226425, #010101)";
 		}
 		viajes += parseInt(aregloLS.cantidad);
-		importe1.innerHTML = `cantidad: ${viajes}<br>$${viajes * 25}`
+		importe1.innerHTML = `cantidad: ${viajes}<br>$${viajes * comision}`
 	}
 	r.forEach(re => {
 		fila.forEach(item => {
@@ -238,7 +238,7 @@ const recibirData = async () => {
 				}
 			})
 			viajes1 += parseInt(aregloLS.cantidad);
-			importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * 25}`
+			importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * comision}`
 		}
 		if (aregloLS.delivery == delivery2) {
 			fila.forEach(item => {
@@ -249,7 +249,7 @@ const recibirData = async () => {
 				}
 			})
 			viajes2 += parseInt(aregloLS.cantidad);
-			importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * 25}`
+			importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
 		}
 		if (aregloLS.delivery == delivery3) {
 			fila.forEach(item => {
@@ -260,7 +260,7 @@ const recibirData = async () => {
 				}
 			})
 			viajes3 += parseInt(aregloLS.cantidad);
-			importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * 25}`
+			importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * comision}`
 		}
 		if (aregloLS.delivery == pagado) {
 			fila.forEach(item => {
@@ -310,7 +310,6 @@ const recibirData = async () => {
 					item.children[5].style.background = " linear-gradient(to right, #816907, #010101)";
 					repartoCliente1.innerHTML += `${aregloViajeLS.cliente}<br>`;
 					ejecucion1 = true
-					console.log(r)
 					printPrint(ejecucion1, 0, 4, hidden_delivery1, aregloLS, r);
 					borraDelivery(ejecucion1, 0, 7, delivery1);
 					hidden_delivery1[hd1] = item;
@@ -490,11 +489,14 @@ const recibirData = async () => {
 							});
 
 							// boton de borrar
-							item.children[5].children[0].children[7].addEventListener("click", () => {
-								fetch(`https://apibar-production.up.railway.app/pedidos/${item.children[7].textContent}`, {
+							const borrarUnPedido = async () => {
+								let pedidoDELETE = await fetch(`https://apibar-production.up.railway.app/pedidos/${item.children[7].textContent}`, {
 									method: "DELETE"
 								})
 								window.location.reload();
+							}
+							item.children[5].children[0].children[7].addEventListener("click", () => {
+								borrarUnPedido();
 							});
 							// editor de pedidos
 							item.children[5].children[0].children[8].addEventListener("click", () => {
@@ -569,15 +571,14 @@ const recibirData = async () => {
 		viajes3 = parseInt(darOk(ejecucion3, delivery3, hidden_delivery3, viajes3, repartoCliente3, hd3, importe3, 2, 31, r))
 		ejecucion3 = false; hd3 = 0;
 	});
-
 	$(".imprCuaderno").click(function () {
-		impCuaderno(r, suma);
+		impCuaderno(r, suma,table2.children[0].children,JSON.parse(fechaLS).fecha,viajes1,viajes2,viajes3,comision);
 	})
 
 	table1.scrollTop = table1.scrollHeight
 }
 
-document.querySelector(".cerrarSesion").addEventListener("click",() => {
+document.querySelector(".cerrarSesion").addEventListener("click", () => {
 	// let datafechaD = await fechaDELETE.json();
 	cerrarSesion()
 })

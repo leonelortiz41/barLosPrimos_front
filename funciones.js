@@ -248,6 +248,7 @@ const cerrarSesion = async () => {
 			"border-radius": "18px"
 		})
 		localStorage.removeItem("pedidosViaje");
+		localStorage.removeItem("pedidosEnViaje");
 		localStorage.removeItem("fechaLS");
 		setTimeout(() => { window.location.href = "index.html" }, 2010)
 	}
@@ -343,15 +344,6 @@ const ticketDelivery = (hidden_delivery, r) => {
 	w.print();
 	w.close()
 }
-const imprimirCuaderno = () => {
-	w = window.open("ticketPedido.html")
-
-	// w.focus();
-	w.print();
-	// w.close()	 
-}
-
-
 
 const ticketCliente = (comida, importe) => {
 	w = window.open()
@@ -425,11 +417,19 @@ const ticketCliente = (comida, importe) => {
 	w.close()
 }
 
-const impCuaderno = (r, suma) => {
+const impCuaderno = (r, suma, table2, fecha,viajes1,viajes2,viajes3,comision) => {
 	w = window.open()
+	let div = w.document.createElement("div");
+	w.document.body.appendChild(div);
+	div.innerHTML = `<h1>DIA: ${fecha}</h1><br>
+					<h2>VIAJES:</h2>
+					<h4>${table2[0].children[0].textContent}= (${viajes1}) $${viajes1*comision}</h4>
+					<h4>${table2[0].children[1].textContent}= (${viajes2}) $${viajes2*comision}</h4>
+					<h4>${table2[0].children[2].textContent}= (${viajes3}) $${viajes3*comision}</h4>`
 	let table = w.document.createElement('table');
 	w.document.body.appendChild(table);
 	let fila = [];
+	console.log(table2)
 	for (let i = 0; i <= r.length - 1; i++) {
 		fila[i] = w.document.createElement(`tr`);
 		table.appendChild(fila[i]);
