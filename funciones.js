@@ -144,11 +144,11 @@ const agregarViaje = (fila, hidden_delivery, ejecucion, repartoCliente, delivery
 		}
 		if (i == hidden_delivery.length - 1) ejecucion = true;
 	}
-	printPrint(ejecucion, ar1, ar2, hidden_delivery,arr, r);
+	printPrint(ejecucion, ar1, ar2, hidden_delivery, arr, r);
 	borraDelivery(ejecucion, ar1, ar3, delivery);
 }
 
-const printPrint = (ejecucion, ar1, ar2, hidden_delivery,arr, r) => {
+const printPrint = (ejecucion, ar1, ar2, hidden_delivery, arr, r) => {
 	if (ejecucion == true) {
 		if (botonDeli[ar2] == undefined) {
 			creaBoton(botonDeli, ar2, `<i class="fa-solid fa-print"></i>`, "imp");
@@ -219,12 +219,17 @@ const setViajeLS = (r, delivery) => {
 }
 
 
-const cerrarSesion = () => {
-	let option=confirm("esta seguro de cerrar sesion? recuerde haber guardado el cuaderno antes.")
-	if(option==true){
-		fetch("https://apibar-production.up.railway.app/pedidos", {
+const cerrarSesion = async () => {
+	let option = confirm("esta seguro de cerrar sesion? recuerde haber guardado el cuaderno antes.")
+	if (option == true) {
+
+		let fechaDELETE = await fetch('https://apibar-production.up.railway.app/date', {
 			method: "DELETE"
 		})
+		let pedidosDELETE = await fetch('https://apibar-production.up.railway.app/pedidos', {
+			method: "DELETE"
+		})
+		console.log(pedidosDELETE)
 		$(".table1").hide()
 		$(".table2").hide()
 		$(".table3").hide()
@@ -237,11 +242,13 @@ const cerrarSesion = () => {
 		$(sesionEnd).css({
 			"color": "#f95",
 			"display": "flex",
-			"text-align":"center",
+			"text-align": "center",
 			"margin": "auto",
 			"background": "#080808",
 			"border-radius": "18px"
 		})
+		localStorage.removeItem("pedidosViaje");
+		localStorage.removeItem("fechaLS");
 		setTimeout(() => { window.location.href = "index.html" }, 2010)
 	}
 }

@@ -45,6 +45,48 @@ let colorSan = "#121212", colorHamb = "#121212", colorPapas = "#121212", colorPi
 let ldsring = document.querySelector(".lds-ring");
 $(".form-date").hide();
 $(".general").hide();
+const recibirFecha = async () => {
+	let fechaLS = localStorage.getItem("fechaLS") || null;
+	if (fechaLS == null) {
+		const aa = async () => {
+			const fechaGET = await fetch("https://apibar-production.up.railway.app/date")
+			const dataFecha = await fechaGET.json();
+			fechaLS = dataFecha;
+			console.log(fechaLS)
+			if (fechaLS.length==0) {
+				$(".general").hide()
+				$(".form-date").show();
+				$(".navegador").hide()
+				$(".form-date").submit(async (e) => {
+					e.preventDefault()
+					$(".form-date").hide()
+					$(".general").show()
+					$(".navegador").show()
+					let fecha = {
+						fecha: `${document.querySelector(".fecha").value}`
+					}
+					let fechaGET = await fetch("https://apibar-production.up.railway.app/date", {
+						method: "POST",
+						body: JSON.stringify(fecha),
+						headers: { "content-type": "application/json" }
+					})
+					let dataFecha = await fechaGET.json();
+					localStorage.setItem("fechaLS", JSON.stringify(dataFecha))
+					console.log(dataFecha)
+					$(".impDate").html(`<h2>${dataFecha.fecha}</h2>`)
+				})
+			}
+		}
+		aa();
+	}
+	else {
+		$(".form-date").hide();
+		$(".general").show();
+		$(".impDate").html(`<h2>${JSON.parse(fechaLS).fecha}</h2>`);
+	}
+}
+recibirFecha();
+
 const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidasdb) => {
 
 	let stockSan = localStorage.getItem("stockSan") || null;
@@ -149,7 +191,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	}
 	else platosdb = JSON.parse(platosLS);
 
-	
+
 	if (bebidasLS == null) {
 		bebidasdb = await fetch("https://apibar-production.up.railway.app/bebidas"); bebidasdb = await bebidasdb.json();
 		localStorage.setItem("bebidasLS", JSON.stringify(bebidasdb));
@@ -260,35 +302,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 				window.location.href = "cuaderno.html"
 			})
 		}
-		fetch("https://apibar-production.up.railway.app/date")
-			.then(r => r.json())
-			.then(r => {
-				if (r.length == 0) {
-					$(".general").hide()
-					$(".form-date").show();
-					$(".navegador").hide()
-					$(".form-date").submit(function (e) {
-						e.preventDefault()
-						$(".form-date").hide()
-						$(".general").show()
-						$(".navegador").show()
-						let fecha = {
-							fecha: `${document.querySelector(".fecha").value}`
-						}
-						fetch("https://apibar-production.up.railway.app/date", {
-							method: "POST",
-							body: JSON.stringify(fecha),
-							headers: { "content-type": "application/json" }
-						})
-						$(".impDate").html(`<h2>${fecha.fecha}</h2>`)
-					})
-				} else {
-					$(".form-date").hide();
-					$(".general").show();
-					let fecha = r[0].fecha
-					$(".impDate").html(`<h2>${fecha}</h2>`);
-				}
-			})
+
 	})
 	$(".agregadoPapas").css("display", "block")
 	$(".agregadoHuevo").css("display", "block")
@@ -312,7 +326,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	mostrarElementos("bebidas")
 	$("#MilanesaComun").click((e) => {
 		selectComida("comun", "Milanesa comun", milanesasdb[0].precio, e.target.classList[1])
-	}).css("background-color", colorSan)
+	}).css({ "background": colorSan })
 
 	$("#MilanesaFiambre").click((e) => {
 		selectComida("fiambre", "Milanesa esp. de fiambre", milanesasdb[1].precio, e.target.classList[1])

@@ -75,13 +75,20 @@ $(".botonCerrarTable2").click(() => {
 		"display": "none"
 	})
 })
+let ldsring = document.querySelector(".lds-ring");
+let fechaLS = localStorage.getItem("fechaLS") || null
+if (fechaLS == null) {
+	async () => {
+		const fechaGET = await fetch("https://apibar-production.up.railway.app/date")
+		const dataFecha = await fechaGET.json();
+		fechaLS = dataFecha;
+	}
+}
+$(".impDate").html(`<h2>${JSON.parse(fechaLS).fecha}</h2>`)
 const recibirData = async () => {
 	let petiGETPedidos = await fetch("https://apibar-production.up.railway.app/pedidos")
 	let r = await petiGETPedidos.json()
-	let petiGETDate = await fetch("https://apibar-production.up.railway.app/date")
-	let date = await petiGETDate.json()
-	$(".impDate").html(`<h2>${date[0].fecha}</h2>`)
-
+	ldsring.remove();
 
 
 	let dadaa = [], comida = []
@@ -148,20 +155,19 @@ const recibirData = async () => {
 	let pceldaTotal = document.createElement("p")
 	pceldaTotal.setAttribute("class", "pceldaTotal")
 	pceldaTotal.innerHTML = `Importe total :   *****`
-	console.log(pceldaTotal)
 	celdaTotal.appendChild(pceldaTotal)
 	let eye = document.createElement("button")
 	eye.setAttribute("class", "eye")
-	eye.innerHTML=`<i class="fa-solid fa-eye"></i>`
+	eye.innerHTML = `<i class="fa-solid fa-eye"></i>`
 	celdaTotal.appendChild(eye)
 	eye.addEventListener("click", () => {
 		if (pceldaTotal.innerHTML == `Importe total :   *****`) {
 			pceldaTotal.innerHTML = `Importe total :   $${suma}`;
-			eye.innerHTML=`<i class="fa-solid fa-eye-slash"></i>`
+			eye.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
 		}
-		else{
+		else {
 			pceldaTotal.innerHTML = `Importe total :   *****`;
-			eye.innerHTML=`<i class="fa-solid fa-eye"></i>`
+			eye.innerHTML = `<i class="fa-solid fa-eye"></i>`
 		}
 	})
 
@@ -571,11 +577,8 @@ const recibirData = async () => {
 	table1.scrollTop = table1.scrollHeight
 }
 
-document.querySelector(".cerrarSesion").addEventListener("click", () => {
-
-	fetch('https://apibar-production.up.railway.app/date', {
-		method: "DELETE"
-	})
+document.querySelector(".cerrarSesion").addEventListener("click",() => {
+	// let datafechaD = await fechaDELETE.json();
 	cerrarSesion()
 })
 
