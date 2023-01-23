@@ -51,8 +51,8 @@ const recibirFecha = async () => {
 		const aa = async () => {
 			const fechaGET = await fetch("https://apibar-production.up.railway.app/date")
 			const dataFecha = await fechaGET.json();
+			localStorage.setItem("fechaLS", JSON.stringify(dataFecha))
 			fechaLS = dataFecha;
-			console.log(fechaLS)
 			if (fechaLS.length == 0) {
 				$(".general").hide()
 				$(".form-date").show();
