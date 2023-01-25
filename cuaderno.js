@@ -76,15 +76,16 @@ $(".botonCerrarTable2").click(() => {
 	})
 })
 let ldsring = document.querySelector(".lds-ring");
-let fechaLS = localStorage.getItem("fechaLS") || null
-if (fechaLS == null) {
-	async () => {
-		const fechaGET = await fetch("https://apibar-production.up.railway.app/date")
-		const dataFecha = await fechaGET.json();
-		fechaLS = dataFecha;
-	}
-}
-$(".impDate").html(`<h2>${JSON.parse(fechaLS)[0].fecha}</h2>`)
+// let fechaLS = localStorage.getItem("fechaLS") || null
+// if (fechaLS == null) {
+// 	async () => {
+// 		const fechaGET = await fetch("https://apibar-production.up.railway.app/date")
+// 		const dataFecha = await fechaGET.json();
+// 		fechaLS = dataFecha;
+// 	}
+// }
+const date = new Date().toLocaleDateString();
+$(".impDate").html(`<h2>${date}</h2>`)
 const recibirData = async () => {
 	let petiGETPedidos = await fetch("https://apibar-production.up.railway.app/pedidos")
 	let r = await petiGETPedidos.json()
@@ -172,22 +173,37 @@ const recibirData = async () => {
 	})
 
 
-	let aregloLS = JSON.parse(localStorage.getItem("pedidosEnViaje")) || []
+	let aregloLS = []
 	let aregloViajeLS = JSON.parse(localStorage.getItem("pedidosViaje")) || []
-	let pedidoEntregado = (delivery, viajes) => {
+	let pedidoEntregado = (importe,delivery, viajes,item,r) => {
 		if (r.id == item.children[7].textContent) {
 			item.children[5].innerHTML = `${delivery}`
 			item.children[5].style = "box-shadow: inset 8px -1px 10px -6px #fff;"
 			item.children[5].style.background = " linear-gradient(to right, #226425, #010101)";
 		}
-		viajes += parseInt(aregloLS.cantidad);
-		importe1.innerHTML = `cantidad: ${viajes}<br>$${viajes * comision}`
 	}
 	r.forEach(re => {
 		fila.forEach(item => {
 			if (re.statu == `entregado_${delivery1}`) {
-				pedidoEntregado(delivery1, viajes1)
-
+				if (re.id == item.children[7].textContent) {
+					viajes1+=re.cantidad;
+					importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * comision}`
+				}
+				pedidoEntregado(importe1,delivery1, viajes1,item,re)
+			}
+			if (re.statu == `entregado_${delivery2}`) {
+				if (re.id == item.children[7].textContent) {
+					viajes2+=re.cantidad;
+					importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
+				}
+				pedidoEntregado(importe2,delivery2, viajes2,item,re)
+			}
+			if (re.statu == `entregado_${delivery3}`) {
+				if (re.id == item.children[7].textContent) {
+					viajes3+=re.cantidad;
+					importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * comision}`
+				}
+				pedidoEntregado(importe3,delivery3, viajes3,item,re)
 			}
 			if (re.pj == "1") {
 				if (re.id == item.children[0].textContent) {
@@ -436,7 +452,7 @@ const recibirData = async () => {
 							item.children[5].children[0].children[4].addEventListener("click", () => {
 
 
-								let aregloLS2 = JSON.parse(localStorage.getItem("pedidosEnViaje"))
+								let aregloLS2 = []
 								aregloLS2.forEach(arr => {
 									if (item.children[7].textContent == arr.id) {
 										arr.delivery = retiro
@@ -444,7 +460,6 @@ const recibirData = async () => {
 									}
 								})
 								let arrEnviajeJSON = JSON.stringify(aregloLS2);
-								localStorage.setItem("pedidosEnViaje", arrEnviajeJSON)
 
 								item.children[5].style = "box-shadow: inset 8px -1px 10px -6px #fff;"
 								item.children[5].style.background = " linear-gradient(to right, #226425, #010101)";
@@ -572,16 +587,17 @@ const recibirData = async () => {
 		ejecucion3 = false; hd3 = 0;
 	});
 	$(".imprCuaderno").click(function () {
-		impCuaderno(r, suma,table2.children[0].children,JSON.parse(fechaLS).fecha,viajes1,viajes2,viajes3,comision);
+		impCuaderno(r, suma,table2.children[0].children,date,viajes1,viajes2,viajes3,comision);
 	})
 
 	table1.scrollTop = table1.scrollHeight
+	console.log(viajes2)
+	document.querySelector(".cerrarSesion").addEventListener("click", () => {
+		// let datafechaD = await fechaDELETE.json();
+		cerrarSesion()
+	})
 }
 
-document.querySelector(".cerrarSesion").addEventListener("click", () => {
-	// let datafechaD = await fechaDELETE.json();
-	cerrarSesion()
-})
 
 recibirData()
 

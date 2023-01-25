@@ -102,40 +102,49 @@ const pintar = (hidden, color) => {
 
 const darOk = (ejecucion, delivery, hidden_delivery, viajes, repartoCliente, hd, importe, ar1, ar2, r) => {
 	if (ejecucion == true) {
-		let viaj = JSON.parse(localStorage.getItem("pedidosViaje")) || []
-		let arraux = [];
-		for (var i = 0; i < viaj.length; i++) {
-			if (viaj[i].delivery != delivery) {
-				arraux.push(viaj[i])
-			}
-		}
-		if (arraux.length >= 1) {
-			let arrViajJSON = JSON.stringify(arraux);
-			localStorage.setItem("pedidosViaje", arrViajJSON)
-		}
-		else { localStorage.removeItem("pedidosViaje") }
-		enviado(r, hidden_delivery, delivery)
-		table3.children[0].children[ar1].children[2].removeChild(botonDeli[ar2])
-		botonDeli[ar2] = undefined
-		fila.forEach(item => {
-			hidden_delivery.forEach(hidden => {
-				pintar(hidden_delivery, 226425)
-				if (item.children[0].textContent == hidden.children[0].textContent) {
-					viajes += parseInt(item.children[4].textContent);
-				}
+		const statuPUT = async () => {
+			let da = await fetch(`https://apibar-production.up.railway.app/statu/${hidden_delivery[0].children[0].textContent}`, {
+				method: "PUT",
+				body: `{"statu": "entregado_${delivery}"}`,
+				headers: { "content-type": "application/json" }
 			})
-		})
-		repartoCliente.innerHTML = ``
-		hidden_delivery.splice(0, hidden_delivery.length);
-		hd = 0;
-		importe.innerHTML = `cantidad: ${viajes}<br>$${viajes * 17}`
-		window.location.reload();
+			let data = await da.json();
+			let viaj = JSON.parse(localStorage.getItem("pedidosViaje")) || []
+			let arraux = [];
+			for (var i = 0; i < viaj.length; i++) {
+				if (viaj[i].delivery != delivery) {
+					arraux.push(viaj[i])
+				}
+			}
+			if (arraux.length >= 1) {
+				let arrViajJSON = JSON.stringify(arraux);
+				localStorage.setItem("pedidosViaje", arrViajJSON)
+			}
+			else { localStorage.removeItem("pedidosViaje") }
+			enviado(r, hidden_delivery, delivery)
+			table3.children[0].children[ar1].children[2].removeChild(botonDeli[ar2])
+			botonDeli[ar2] = undefined
+			fila.forEach(item => {
+				hidden_delivery.forEach(hidden => {
+					pintar(hidden_delivery, 226425)
+					if (item.children[0].textContent == hidden.children[0].textContent) {
+						viajes += parseInt(item.children[4].textContent);
+					}
+				})
+			})
+			repartoCliente.innerHTML = ``
+			hidden_delivery.splice(0, hidden_delivery.length);
+			hd = 0;
+			importe.innerHTML = `cantidad: ${viajes}<br>$${viajes * comision}`
+			window.location.reload();
+		}
+		statuPUT();
 	}
 	return viajes;
 }
 
 const agregarViaje = (fila, hidden_delivery, ejecucion, repartoCliente, delivery, ar1, ar2, ar3, r) => {
-	let arr = JSON.parse(localStorage.getItem("pedidosEnViaje")) || []
+	let arr = []
 	viajado(r, hidden_delivery, delivery, ejecucion)
 	for (var i = 0; i < hidden_delivery.length; i++) {
 		if (ejecucion == false) {
@@ -204,11 +213,10 @@ const viajado = (r, hidden_delivery, delivery, ejecucion) => {
 }
 
 const setEnViajeLS = (r, delivery) => {
-	let arr = JSON.parse(localStorage.getItem("pedidosEnViaje")) || [];
+	let arr =  [];
 	r["delivery"] = delivery
 	arr.push(r);
 	let arrEnviajeJSON = JSON.stringify(arr);
-	localStorage.setItem("pedidosEnViaje", arrEnviajeJSON)
 }
 const setViajeLS = (r, delivery) => {
 	let arr = JSON.parse(localStorage.getItem("pedidosViaje")) || [];
@@ -417,15 +425,15 @@ const ticketCliente = (comida, importe) => {
 	w.close()
 }
 
-const impCuaderno = (r, suma, table2, fecha,viajes1,viajes2,viajes3,comision) => {
+const impCuaderno = (r, suma, table2, date, viajes1, viajes2, viajes3, comision) => {
 	w = window.open()
 	let div = w.document.createElement("div");
 	w.document.body.appendChild(div);
-	div.innerHTML = `<h1>DIA: ${fecha}</h1><br>
+	div.innerHTML = `<h1>DIA: ${date}</h1><br>
 					<h2>VIAJES:</h2>
-					<h4>${table2[0].children[0].textContent}= (${viajes1}) $${viajes1*comision}</h4>
-					<h4>${table2[0].children[1].textContent}= (${viajes2}) $${viajes2*comision}</h4>
-					<h4>${table2[0].children[2].textContent}= (${viajes3}) $${viajes3*comision}</h4>`
+					<h4>${table2[0].children[0].textContent}= (${viajes1}) $${viajes1 * comision}</h4>
+					<h4>${table2[0].children[1].textContent}= (${viajes2}) $${viajes2 * comision}</h4>
+					<h4>${table2[0].children[2].textContent}= (${viajes3}) $${viajes3 * comision}</h4>`
 	let table = w.document.createElement('table');
 	w.document.body.appendChild(table);
 	let fila = [];

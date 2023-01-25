@@ -43,49 +43,10 @@ let milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidas
 let colorSan = "#121212", colorHamb = "#121212", colorPapas = "#121212", colorPizzas = "#121212", colorSaPapas = "#121212", colorHamPapas = "#121212";
 
 let ldsring = document.querySelector(".lds-ring");
+const date = new Date().toLocaleDateString();
 $(".form-date").hide();
-$(".general").hide();
-const recibirFecha = async () => {
-	let fechaLS = localStorage.getItem("fechaLS") || null;
-	if (fechaLS == null) {
-		const aa = async () => {
-			const fechaGET = await fetch("https://apibar-production.up.railway.app/date")
-			const dataFecha = await fechaGET.json();
-			localStorage.setItem("fechaLS", JSON.stringify(dataFecha))
-			fechaLS = dataFecha;
-			if (fechaLS.length == 0) {
-				$(".general").hide()
-				$(".form-date").show();
-				$(".navegador").hide()
-				$(".form-date").submit(async (e) => {
-					e.preventDefault()
-					$(".form-date").hide()
-					$(".general").show()
-					$(".navegador").show()
-					let fecha = {
-						fecha: `${document.querySelector(".fecha").value}`
-					}
-					let fechaGET = await fetch("https://apibar-production.up.railway.app/date", {
-						method: "POST",
-						body: JSON.stringify(fecha),
-						headers: { "content-type": "application/json" }
-					})
-					let dataFecha = await fechaGET.json();
-					localStorage.setItem("fechaLS", JSON.stringify(dataFecha))
-					console.log(dataFecha)
-					$(".impDate").html(`<h2>${dataFecha.fecha}</h2>`)
-				})
-			}
-		}
-		aa();
-	}
-	else {
-		$(".form-date").hide();
-		$(".general").show();
-		$(".impDate").html(`<h2>${JSON.parse(fechaLS)[0].fecha}</h2>`);
-	}
-}
-recibirFecha();
+$(".general").show();
+$(".impDate").html(`<h2>${date}</h2>`);
 
 const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidasdb) => {
 
