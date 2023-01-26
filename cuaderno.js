@@ -184,27 +184,6 @@ const recibirData = async () => {
 	}
 	r.forEach(re => {
 		fila.forEach(item => {
-			if (re.statu == `entregado_${delivery1}`) {
-				if (re.id == item.children[7].textContent) {
-					viajes1+=re.cantidad;
-					importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * comision}`
-				}
-				pedidoEntregado(importe1,delivery1, viajes1,item,re)
-			}
-			if (re.statu == `entregado_${delivery2}`) {
-				if (re.id == item.children[7].textContent) {
-					viajes2+=re.cantidad;
-					importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
-				}
-				pedidoEntregado(importe2,delivery2, viajes2,item,re)
-			}
-			if (re.statu == `entregado_${delivery3}`) {
-				if (re.id == item.children[7].textContent) {
-					viajes3+=re.cantidad;
-					importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * comision}`
-				}
-				pedidoEntregado(importe3,delivery3, viajes3,item,re)
-			}
 			if (re.pj == "1") {
 				if (re.id == item.children[0].textContent) {
 					item.children[3].innerHTML += ` <b>(PJ)</b>`
@@ -241,6 +220,27 @@ const recibirData = async () => {
 						petitPUT();
 					})
 				}
+			}
+			if (re.statu == `entregado_${delivery1}`) {
+				if (re.id == item.children[7].textContent) {
+					viajes1+=re.cantidad;
+					importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * comision}`
+				}
+				pedidoEntregado(importe1,delivery1, viajes1,item,re)
+			}
+			if (re.statu == `entregado_${delivery2}`) {
+				if (re.id == item.children[7].textContent) {
+					viajes2+=re.cantidad;
+					importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
+				}
+				pedidoEntregado(importe2,delivery2, viajes2,item,re)
+			}
+			if (re.statu == `entregado_${delivery3}`) {
+				if (re.id == item.children[7].textContent) {
+					viajes3+=re.cantidad;
+					importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * comision}`
+				}
+				pedidoEntregado(importe3,delivery3, viajes3,item,re)
 			}
 		})
 	})
