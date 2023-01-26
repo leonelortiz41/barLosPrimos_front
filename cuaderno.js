@@ -1,5 +1,5 @@
 let output = [], delivery1 = "Maia", delivery2 = "Barbi", delivery3 = "Tomi", retiro = "retirado", pagado = "pagado";
-const comision=25;
+const comision = 25;
 let hidden_delivery1 = [], hidden_delivery2 = [], hidden_delivery3 = [];
 let agregar = document.querySelector(".agregar")
 let table1 = document.querySelector(".table1")
@@ -175,7 +175,7 @@ const recibirData = async () => {
 
 	let aregloLS = []
 	let aregloViajeLS = JSON.parse(localStorage.getItem("pedidosViaje")) || []
-	let pedidoEntregado = (importe,delivery, viajes,item,r) => {
+	let pedidoEntregado = (importe, delivery, viajes, item, r) => {
 		if (r.id == item.children[7].textContent) {
 			item.children[5].innerHTML = `${delivery}`
 			item.children[5].style = "box-shadow: inset 8px -1px 10px -6px #fff;"
@@ -223,24 +223,24 @@ const recibirData = async () => {
 			}
 			if (re.statu == `entregado_${delivery1}`) {
 				if (re.id == item.children[7].textContent) {
-					viajes1+=re.cantidad;
+					viajes1 += re.cantidad;
 					importe1.innerHTML = `cantidad: ${viajes1}<br>$${viajes1 * comision}`
 				}
-				pedidoEntregado(importe1,delivery1, viajes1,item,re)
+				pedidoEntregado(importe1, delivery1, viajes1, item, re)
 			}
 			if (re.statu == `entregado_${delivery2}`) {
 				if (re.id == item.children[7].textContent) {
-					viajes2+=re.cantidad;
+					viajes2 += re.cantidad;
 					importe2.innerHTML = `cantidad: ${viajes2}<br>$${viajes2 * comision}`
 				}
-				pedidoEntregado(importe2,delivery2, viajes2,item,re)
+				pedidoEntregado(importe2, delivery2, viajes2, item, re)
 			}
 			if (re.statu == `entregado_${delivery3}`) {
 				if (re.id == item.children[7].textContent) {
-					viajes3+=re.cantidad;
+					viajes3 += re.cantidad;
 					importe3.innerHTML = `cantidad: ${viajes3}<br>$${viajes3 * comision}`
 				}
-				pedidoEntregado(importe3,delivery3, viajes3,item,re)
+				pedidoEntregado(importe3, delivery3, viajes3, item, re)
 			}
 		})
 	})
@@ -573,21 +573,87 @@ const recibirData = async () => {
 	})
 
 	let ok1 = document.querySelector(".ok1").addEventListener("click", () => {
+		$(".ok1").hide();
+		let lnsRing = document.createElement("div")
+		table3.children[0].children[0].children[2].appendChild(lnsRing)
+		lnsRing.setAttribute("class", "lds-ring")
+		let div1 = document.createElement("div")
+		lnsRing.appendChild(div1)
+		let div2 = document.createElement("div")
+		lnsRing.appendChild(div2)
+		let div3 = document.createElement("div")
+		lnsRing.appendChild(div3)
+		let div4 = document.createElement("div")
+		lnsRing.appendChild(div4)
+		$(".lds-ring").css({
+			"width": "20px",
+			"height": "20px",
+			"display": "inline-block",
+			"margin-top": "0"
+		})
+		$(".lds-ring div").css({
+			"width": "15px",
+			"height": "15px"
+		})
 		viajes1 = parseInt(darOk(ejecucion1, delivery1, hidden_delivery1, viajes1, repartoCliente1, hd1, importe1, 0, 4, r))
 		ejecucion1 = false; hd1 = 0;
 	});
 
 	let ok2 = document.querySelector(".ok2").addEventListener("click", () => {
+		$(".ok2").hide();
+		let lnsRing = document.createElement("div")
+		table3.children[0].children[1].children[2].appendChild(lnsRing)
+		lnsRing.setAttribute("class", "lds-ring")
+		let div1 = document.createElement("div")
+		lnsRing.appendChild(div1)
+		let div2 = document.createElement("div")
+		lnsRing.appendChild(div2)
+		let div3 = document.createElement("div")
+		lnsRing.appendChild(div3)
+		let div4 = document.createElement("div")
+		lnsRing.appendChild(div4)
+		$(".lds-ring").css({
+			"width": "20px",
+			"height": "20px",
+			"display": "inline-block",
+			"margin-top": "0"
+		})
+		$(".lds-ring div").css({
+			"width": "15px",
+			"height": "15px"
+		})
 		viajes2 = parseInt(darOk(ejecucion2, delivery2, hidden_delivery2, viajes2, repartoCliente2, hd2, importe2, 1, 5, r))
 		ejecucion2 = false; hd2 = 0;
 	});
 
 	let ok3 = document.querySelector(".ok3").addEventListener("click", () => {
+		$(".ok3").hide();
+		let lnsRing = document.createElement("div")
+		table3.children[0].children[2].children[2].appendChild(lnsRing)
+		lnsRing.setAttribute("class", "lds-ring")
+		let div1 = document.createElement("div")
+		lnsRing.appendChild(div1)
+		let div2 = document.createElement("div")
+		lnsRing.appendChild(div2)
+		let div3 = document.createElement("div")
+		lnsRing.appendChild(div3)
+		let div4 = document.createElement("div")
+		lnsRing.appendChild(div4)
+		$(".lds-ring").css({
+			"width": "20px",
+			"height": "20px",
+			"display": "inline-block",
+			"margin-top": "0"
+		})
+		$(".lds-ring div").css({
+			"width": "15px",
+			"height": "15px"
+		})
 		viajes3 = parseInt(darOk(ejecucion3, delivery3, hidden_delivery3, viajes3, repartoCliente3, hd3, importe3, 2, 31, r))
 		ejecucion3 = false; hd3 = 0;
 	});
 	$(".imprCuaderno").click(function () {
-		impCuaderno(r, suma,table2.children[0].children,date,viajes1,viajes2,viajes3,comision);
+		impCuaderno(r, suma, table2.children[0].children, date, viajes1, viajes2, viajes3, comision);
 	})
 
 	table1.scrollTop = table1.scrollHeight
