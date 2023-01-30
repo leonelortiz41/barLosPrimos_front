@@ -231,9 +231,6 @@ const cerrarSesion = async () => {
 	let option = confirm("esta seguro de cerrar sesion? recuerde haber guardado el cuaderno antes.")
 	if (option == true) {
 
-		let fechaDELETE = await fetch('https://apibar-production.up.railway.app/date', {
-			method: "DELETE"
-		})
 		let pedidosDELETE = await fetch('https://apibar-production.up.railway.app/pedidos', {
 			method: "DELETE"
 		})
@@ -255,9 +252,7 @@ const cerrarSesion = async () => {
 			"background": "#080808",
 			"border-radius": "18px"
 		})
-		localStorage.removeItem("pedidosViaje");
-		localStorage.removeItem("pedidosEnViaje");
-		localStorage.removeItem("fechaLS");
+		localStorage.clear();
 		setTimeout(() => { window.location.href = "index.html" }, 2010)
 	}
 }

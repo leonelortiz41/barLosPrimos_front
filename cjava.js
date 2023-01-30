@@ -429,41 +429,44 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 		selectComida(0, platosdb[6].nombre, platosdb[2].precio, e.target.classList[1])
 	}).css("background-color", colorPapas)
 
-	let EmpanadasCarne = document.getElementById('EmpanadasCarne')
+	document.getElementById('EmpanadasCarne')
 		.addEventListener("click", () => { selectComida(0, "Empanada de carne", 600) });
 
-	let EmpanadasPollo = document.getElementById('EmpanadasPollo')
+	document.getElementById('EmpanadasPollo')
 		.addEventListener("click", () => { selectComida(0, "Empanada de pollo", 600) });
 
-	let Pepsi2L = document.getElementById('Pepsi2L')
+	document.getElementById('Pepsi2L')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[0].nombre, bebidasdb[0].precio) });
 
-	let Pepsi1_14 = document.getElementById('Pepsi1-1/4')
+	document.getElementById('Pepsi1-1/4')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[1].nombre, bebidasdb[1].precio) });
 
-	let Mirinda2L = document.getElementById('Mirinda2L')
+	document.getElementById('Mirinda2L')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[2].nombre, bebidasdb[2].precio) });
 
-	let Secco = document.getElementById('Secco')
+	document.getElementById('Secco')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[3].nombre, bebidasdb[3].precio) });
 
-	let Coca15L = document.getElementById('Coca15L')
+	document.getElementById('Coca15L')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[4].nombre, bebidasdb[4].precio) });
 
-	let JugoFresh = document.getElementById('JugoFresh')
+	document.getElementById('JugoFresh')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[5].nombre, bebidasdb[5].precio) });
 
-	let VasoGaseosa = document.getElementById('VasoGaseosa')
+	document.getElementById('VasoGaseosa')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[6].nombre, bebidasdb[6].precio) });
 
-	let LataQuilmes = document.getElementById('LataQuilmes')
+	document.getElementById('LataQuilmes')
 		.addEventListener("click", () => { selectComida(0, bebidasdb[7].nombre, bebidasdb[7].precio) });
 
+	document.getElementById('Coca225L')
+		.addEventListener("click", () => { selectComida(0, bebidasdb[8].nombre, bebidasdb[8].precio) });
 
+	document.getElementById('Fanta15L')
+		.addEventListener("click", () => { selectComida(0, bebidasdb[9].nombre, bebidasdb[9].precio) });
 
-
-
-
+	document.getElementById('Fanta225L')
+		.addEventListener("click", () => { selectComida(0, bebidasdb[10].nombre, bebidasdb[10].precio) });
 
 
 	$(agregadoPapas).click(function () {
@@ -669,7 +672,7 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 			})
 		})
 	}
-	let env=false;
+	let env = false;
 	const enviarData = async () => {
 		$(".enviar").hide();
 		let lnsRing = document.createElement("div")
