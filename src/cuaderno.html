@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>cuaderno</title>
+	<link rel="stylesheet" type="text/css" href="estil.css">
+	<meta name="viewport" content="initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="Encabezado">
+			<img src="./assets/losPrimos-logo3.png" class="logo" alt="">
+			<!-- <h1>Bar Los Primos</h1> -->
+			<div class="botonTables">
+				<button class="botonCuaTable2"><i class="fa-regular fa-rectangle-list"></i></button>
+				<button class="botonCuaTable3"><i class="fa-solid fa-motorcycle"></i></button>
+			</div>
+			<nav class="navegadorCuaderno navegador">
+				<output class="impDate"></output>
+				<a href="puntoVenta.html" class="cuaderno"><i class="fa-solid fa-store"></i> Punto de venta</a>
+			</nav>
+		</div>
+	</header>
+	<div class="masterContainer">
+
+
+		<table class="table1">
+			<i class="fi fi-rs-print"></i>
+			<thead>
+				<tr>
+					<th class="nroTb">nro</th>
+					<th class="detalleTb">detalle</th>
+					<th class="clienteTb">cliente</th>
+					<th class="importeTb">importe</th>
+					<th class="cantidadTb">cantidad</th>
+				</tr>
+			</thead>
+			<div class="lds-ring lds-ringCuad">
+				<h3>Cargando...</h3>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+
+		</table>
+
+
+		<div class="contein">
+			<table class="table2">
+				<tr>
+					<th class="delivery1"></th>
+					<th class="delivery2"></th>
+					<th class="delivery3"></th>
+				</tr>
+				<tr>
+					<td class="importe1"></td>
+					<td class="importe2"></td>
+					<td class="importe3"></td>
+				</tr>
+				<td>
+					<button class="botonCerrarTable2">x</button>
+				</td>
+			</table>
+			
+			<table class="table3">
+				<tr>
+					<th class="repartoDeliv1"></th>
+					<td class="repartoClients1"></td>
+					<td class="repartoBtn">
+						<button class="ok1"><i class="fa-solid fa-check"></i></button>
+					</td>
+				</tr>
+				<tr>
+					<th class="repartoDeliv2"></th>
+					<td class="repartoClients2"></td>
+					<td class="repartoBtn">
+						<button class="ok2"><i class="fa-solid fa-check"></i></button>
+					</td>
+				</tr>
+				<tr>
+					<th class="repartoDeliv3"></th>
+					<td class="repartoClients3"></td>
+					<td class="repartoBtn">
+						<button class="ok3"><i class="fa-solid fa-check"></i></button>
+					</td>
+				</tr>
+				
+			</table>
+			<div class="contAgreg">
+				<input type="submit" class="agregar" value="+">
+			</div>
+			<div class="cerrarYCuaderno">
+				<button class="cerrarSesion"><span class="icon-equis"></span>Cerrar sesion</button>
+				<button class="imprCuaderno"><i class="fa-solid fa-print"></i>Cuaderno</button>
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="funciones.js"></script>
+	<script type="text/javascript" src="cuaderno.js"></script>
+</body>
+
+</html>

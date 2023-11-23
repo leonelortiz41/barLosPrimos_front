@@ -1,0 +1,28 @@
+
+body {
+	background: #080809;
+	color: #fef;
+}
+
+.logo{
+    filter: drop-shadow(0px 0px 4px #666);
+}
+.btn_a{
+    color: #f97422;
+    font-size: 18px;
+    outline: none;
+    border: none;
+}
+.red{
+    background: red;
+}
+.nored{
+    background: none;
+}
+.add{
+    background: #bf6c16;
+    width: 90px;
+    border: none;
+    color: #fef;
+    height: 90px;
+}

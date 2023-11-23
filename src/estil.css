@@ -1,0 +1,1399 @@
+* {
+	padding: 0px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	background: #000;
+	color: #fef;
+}
+
+.logo {
+	filter: drop-shadow(0px 0px 4px #666);
+	width: 120px;
+	margin: auto;
+	margin: auto;
+}
+
+.Encabezado {
+	display: flex;
+	margin: auto;
+	justify-content: space-between;
+	width: 97%;
+	height: 90px;
+	background-color: #11111150;
+	backdrop-filter: blur(5px);
+	padding-inline: 20px;
+	padding-block: 5px;
+	border-radius: 15px;
+}
+
+
+.Encabezado h2 {
+	display: inline-block;
+}
+
+.Encabezado p {
+	margin-top: auto;
+	margin-bottom: auto;
+	justify-content: center;
+	text-align: left;
+	display: inline-block;
+	font-size: 21px;
+}
+
+.Encabezado .cancelar {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 50px;
+	height: 50px;
+	display: inline-block;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	background: #fe0606;
+	color: #fff;
+}
+
+.Encabezado .cancelar:active {
+	background: #000;
+}
+
+h1 {
+	display: inline-block;
+	text-shadow: #000 -4px 0 8px;
+	font-weight: normal;
+	text-align: center;
+	margin: auto;
+	font-size: 49px;
+	width: 35%;
+	color: #bf6c16;
+}
+
+.lds-ring {
+	display: block;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	color: #bf6c16;
+}
+
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 84px;
+	height: 84px;
+	margin: 8px;
+	border: 10px solid;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.7, 0.6, 0.5, 0.8) infinite;
+	border-color: #bf6c16 transparent transparent transparent;
+}
+
+.lds-ringCuad {
+	display: inline-table;
+	position: absolute;
+	left: 20%;
+	width: 100px;
+	height: 70px;
+	margin: auto;
+	vertical-align: top;
+	top: 38%;
+	color: #bf6c16;
+}
+
+.lds-ringCuad div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	margin: 8px;
+	border: 5px solid;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(1.001, 0.102, 1.2, 0.201) infinite;
+	/* animation: lds-ring 1.2s cubic-bezier(0.6, 0.6, 0.5, 0.8) infinite; */
+	border-color: #bf6c16 transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.49s;
+}
+
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.6s;
+}
+
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.divStock {
+	display: flex;
+	width: 40%;
+	justify-content: center;
+}
+
+.divStock label {
+	background: #000;
+	width: 100px;
+	height: 46px;
+	border-radius: 5px;
+	margin: auto;
+	text-align: center;
+	border: none;
+}
+
+.divStock label input {
+	margin: auto;
+	justify-content: center;
+	text-align: center;
+	background: none;
+	outline: none;
+	border: none;
+	width: 100%;
+	font-size: 17px;
+	color: #bf6c16;
+}
+
+.divStock label input::-webkit-inner-spin-button,
+.divStock label input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.Contenedor {
+	border-radius: 10px;
+	display: flex;
+	height: 120px;
+	width: 100%;
+	overflow-x: scroll;
+	margin-top: 4px;
+	background-color: #11111150;
+	backdrop-filter: blur(5px);
+
+}
+
+.Contenedor::-webkit-scrollbar {
+	display: none;
+}
+
+.Contenedor a {
+	transition: all .5s;
+	padding: 6px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	text-align: center;
+	color: #eee;
+	font-size: 23px;
+	text-decoration: none;
+	border-radius: 10px;
+	height: 65px;
+	min-width: 140px;
+
+}
+
+.Contenedor span {
+	margin: auto;
+	z-index: 100;
+}
+
+.Contenedor a:hover {
+	color: #bf6c16;
+	background: #111;
+	transform: scale(1.12);
+}
+
+
+
+
+.general .nav-items,
+.complementos label {
+	display: none;
+}
+
+#milanesas .nav-items,
+#lomitos .nav-items,
+#hamburguesas .nav-items,
+#pizzas .nav-items,
+#papas .nav-items,
+#platos .nav-items,
+#empanadas .nav-items,
+#bebidas .nav-items {
+	display: inline-block;
+	text-align: center;
+	justify-content: center;
+	vertical-align: middle;
+	margin: 0px;
+	margin-top: 25px;
+	border-radius: 10px;
+	width: 99%;
+}
+
+
+.menus .nav-items button {
+	list-style: none;
+	align-items: center;
+	text-align: center;
+	background: linear-gradient(to right, #121212, transparent);
+	height: 35px;
+	color: #fff;
+	border: none;
+	width: 100%;
+	padding: 2px;
+	padding-left: 8px;
+	margin: 0px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 22px;
+	clip-path: polygon(0 0, 100% 0, 98% 100%, 0 100%);
+	transition: all .5s;
+	cursor: pointer;
+}
+
+
+.nav-items button:hover {
+	clip-path: polygon(0 0, 94% 1%, 100% 98%, 6% 100%);
+	background: linear-gradient(to right, #121212 70%,transparent);
+}
+
+.nav-items button:focus {
+	background: #fff;
+	color: #000;
+}
+
+
+
+.elementos {
+	display: inline-block;
+	width: 33%;
+	margin-top: 3px;
+	margin-right: 20px;
+	justify-content: center;
+	cursor: pointer;
+	height: 350px;
+	overflow-y: scroll;
+}
+
+.elementos::-webkit-scrollbar {
+	display: none;
+}
+
+.complementos {
+	display: inline-block;
+	width: 15%;
+	height: 250px;
+	margin-top: 5px;
+	vertical-align: top;
+}
+
+.complementos label {
+	margin: 4px;
+}
+
+
+
+.aggregations input[type=checkbox],
+.complementos label input[type=checkbox] {
+	display: none;
+}
+
+.aggregations .agg:before,
+.complementos label label:before {
+	content: "no";
+	border-radius: 10px;
+	height: 20px;
+	background: #111;
+	width: 20px;
+	margin-right: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	padding: 3px;
+}
+
+.aggregations input[type=checkbox]+label,
+.complementos label input[type=checkbox]+label {
+	cursor: pointer;
+}
+
+.aggregations input[type=checkbox]:checked+label:before,
+.complementos label input[type=checkbox]:checked+label:before {
+	content: "si";
+
+	background: #bf6c16;
+}
+
+.aggregations {
+	display: inline-block;
+	vertical-align: top;
+	width: 17%;
+	margin-top: 5px;
+}
+
+.aggregations .agg {
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 2px;
+	justify-content: center;
+	float: right;
+}
+
+.agregadoPapas,
+.agregadoQueso,
+.agregadoJamon,
+.agregadoHuevo {
+	padding: 5px;
+	display: block;
+	margin: auto;
+	align-content: center;
+	text-align: left;
+	justify-content: center;
+	border-radius: 10px;
+	font-size: 15px;
+}
+
+.papasCantidad,
+.huevoCantidad {
+	width: 30px;
+	height: 20px;
+	text-align: center;
+	float: right;
+	font-size: 18px;
+	border-radius: 3px;
+}
+
+.agregar {
+	display: block;
+	background-color: #bf6c16;
+	color: #000;
+	height: 73px;
+	width: 73px;
+	font-size: 59px;
+	border-radius: 50px;
+	border: none;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+button, input[type="submit"],input[type="button"]{
+	transition: all .2s;
+
+}
+.agregar:active {
+	background-color: #fff;
+}
+
+.contAgreg {
+	display: inline-block;
+}
+
+.contAgreg .agregar {
+	margin-top: 5px;
+}
+
+.carrito1 {
+	width: 26%;
+	display: block;
+	color: #fff;
+	float: right;
+	margin-top: 6px;
+	background: #11111150;
+	border-radius: 12px;
+	padding: 4px;
+	backdrop-filter: blur(5px);
+}
+
+.tableOrder {
+	width: 99%;
+	display: block;
+	margin: auto;
+	height: 300px;
+	overflow-y: scroll;
+}
+
+.tableOrder::-webkit-scrollbar {
+	display: none;
+}
+
+.celdatableOrder {
+	background: #050505;
+	border-radius: 10px;
+	padding: 2px;
+	display: flex;
+	text-align: center;
+	width: 98%;
+	height: 38px;
+	justify-content: space-between;
+	margin: auto;
+	margin-top: 2.5px;
+}
+
+.celdatableOrder td {
+	margin: auto;
+}
+
+.celdaBoton {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	background: #111;
+	color: #bf6c16;
+	font-size: 19px;
+	text-align: center;
+	align-items: center;
+	border-radius: 50%;
+	border: none;
+	margin-block: auto;
+	margin-inline: 1px;
+	transition: all .2s ease;
+}
+
+.celdaBoton:hover {
+	outline: 1.5px solid #bf6c16;
+}
+
+.celdaBoton:active {
+	background: #fff;
+	color: #000;
+}
+
+.celdaCantidad {
+	width: 7%;
+	text-align: center;
+}
+
+.celdaComida {
+	width: 62%;
+	overflow-y: scroll;
+	height: auto;
+	text-align: left;
+}
+
+.celdaComida::-webkit-scrollbar {
+	background: #121212;
+	width: 7px;
+	border-radius: 4px;
+}
+
+.celdaComida::-webkit-scrollbar-thumb {
+	background: #918181;
+	border-radius: 4px;
+}
+
+body::-webkit-scrollbar {
+	background: #121212;
+	width: 7px;
+	border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #bf6c16;
+	border-radius: 4px;
+}
+
+.celdaPrecio {
+	width: 16%;
+	color: #bf6c16;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.carrito .enviar {
+	width: auto;
+	padding: 10px;
+	display: inline-block;
+	color: #000;
+	text-align: center;
+	justify-content: center;
+	font-size: 20px;
+	border-radius: 19px;
+	border: none;
+	background-color: #bf6c16;
+	cursor: pointer;
+}
+
+.carrito i {
+	justify-content: center;
+	text-align: center;
+	display: block;
+}
+
+.carrito .cliente {
+	display: inline-block;
+	font-size: 26px;
+	width: 68%;
+	height: 28px;
+	padding-left: 5px;
+	background-color: #111;
+	color: #fff;
+	text-align: left;
+	justify-content: center;
+	vertical-align: middle;
+	border: none;
+	outline: none;
+	transition: all .3s ease-in;
+	cursor: pointer;
+}
+
+.carrito .cliente:focus {
+	background: #888;
+	color: #000;
+}
+
+.carrito .enviar:active {
+	background-color: #fff;
+}
+
+.carrito output,
+.carrito input {
+	border-radius: 10px;
+}
+
+.pedidoEdit {
+	width: 100%;
+	padding: 2px;
+	display: block;
+	color: #000;
+	text-align: left;
+	padding-left: 5px;
+	font-size: 20px;
+	justify-content: center;
+	border-radius: 8px;
+	border: none;
+	margin: 10px;
+	background-color: #fff;
+	cursor: pointer;
+	position: relative;
+}
+
+.importeOutput {
+	display: inline-block;
+	width: 15%;
+	font-size: 16px;
+	vertical-align: middle;
+	height: 28px;
+	align-items: center;
+	justify-content: center;
+	background: #121212;
+	color: #bf6c16;
+	text-align: center;
+}
+
+
+
+.navegador {
+	display: inline-table;
+	width: 20%;
+	text-align: right;
+	float: right;
+}
+
+.navegador a {
+	color: #fff;
+	text-decoration-line: none;
+	font-size: 26px;
+}
+
+.navegador a:active {
+	color: #999;
+}
+
+.navegador a:hover {
+	text-shadow: #999 0px 0 8px;
+}
+
+.table2 th {
+	color: #bf6c16;
+}
+
+.table2 {
+	/* box-shadow: -2px 2px 6px -3px #bf6c16; */
+	margin-top: 5px;
+	background: #11111150;
+	backdrop-filter: blur(5px);
+	border-radius: 15px;
+}
+.masterContainer{
+	display: flex;
+	width: 100%;
+}
+
+
+.table1 .celDetalles::-webkit-scrollbar,
+.table1::-webkit-scrollbar,
+.repartoClients2::-webkit-scrollbar,
+.repartoClients1::-webkit-scrollbar,
+.repartoClients3::-webkit-scrollbar {
+	background: #121212;
+	width: 10px;
+	border-radius: 4px;
+}
+
+.table1 .celDetalles::-webkit-scrollbar-thumb,
+.table1::-webkit-scrollbar-thumb,
+.repartoClients2::-webkit-scrollbar-thumb,
+.repartoClients1::-webkit-scrollbar-thumb,
+.repartoClients3::-webkit-scrollbar-thumb {
+	background: #212121;
+	border-radius: 4px;
+}
+
+.table2 th {
+	margin: auto;
+	text-align: center;
+	align-content: center;
+	justify-content: center;
+	width: 180px;
+}
+
+.table1 th {
+	color: #bf6c16;
+	align-items: center;
+}
+
+
+.table1 .celDetalles {
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+	height: 70px;
+	display: flex;
+	display: inline-block;
+	text-align: left;
+	justify-content: center;
+	align-items: center;
+}
+
+.table1 .celCliente {
+	text-align: left;
+}
+
+.table1 tr {
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	height: 70px;
+	background: #020202;
+	border: #111 solid 1px;
+}
+
+.table1 thead tr{
+	height: 30px;
+	background: none;
+}
+.nroTb {
+	width: 9%;
+}
+
+.detalleTb {
+	width: 30%;
+}
+
+.clienteTb {
+	width: 15%;
+}
+
+.importeTb {
+	width: 10%;
+}
+
+.cantidadTb {
+	width: 5%;
+}
+
+
+
+.celdaTotal {
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	margin: auto;
+	background-color: #111;
+	width: 100%;
+	height: 30px;
+	display: block;
+}
+.table1 {
+	height: 460px;
+	width: 70%;
+	border: solid #111 1px;
+	border-radius: 18px;
+	overflow-y: auto;
+	align-items: center;
+	vertical-align: top;
+	text-align: center;
+	display: inline-block;
+	justify-content: center;
+	margin: 10px;
+	align-content: center;
+}
+
+.table2 {
+	align-items: center;
+	display: block;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+}
+
+.colBotones {
+	/* background-color: #bf6c16; */
+	width: 100%;
+	height: 100%;
+	overflow-y: hidden;
+	align-items: center;
+	text-align: center;
+	margin: auto;
+	overflow-x: auto;
+	/* background: linear-gradient(to right, #090909, #010101); */
+}
+
+.divBotones {
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.divBotones button {
+	margin: 1px;
+	vertical-align: middle;
+	cursor: pointer;
+	padding: 8px;
+	border: none;
+	border-radius: 8px;
+	font-size: 15px;
+	background: #bf6c16;
+}
+
+.divBotones .mas {
+	float: left;
+	background: #121212;
+	color: #bf6c16;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border-radius: 20px;
+}
+
+.divBotones .mas:active {
+	background: #fff;
+	color: #000;
+}
+
+.boton:hover {
+	background: #fff;
+}
+
+.boton:active {
+	background: #fff;
+	color: #000;
+}
+
+.output {
+	font-size: 20px;
+}
+
+/*#empanadasHref{
+	background-color: #771212;
+}*/
+
+.table3 {
+	background: #11111150;
+	backdrop-filter: blur(5px);
+	border: #bf6c16 solid 1px;
+	border-radius: 15px;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	/* border-collapse: collapse; */
+	/* border: #bf6c16 solid 1px; */
+}
+
+.table3 tr {
+	height: 70px;
+	display: flex;
+	width: 100%;
+}
+.repartoClients2,
+.repartoClients1,
+.repartoClients3 {
+	width: 60%;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	overflow-y: scroll;
+}
+
+.table3 .repartoDeliv1,
+.table3 .repartoDeliv2,
+.table3 .repartoDeliv3 {
+	width: 20%;
+display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	border-right: solid 1px #bf6c16;
+
+}
+.table3 .repartoBtn{
+	display: flex;
+	width: 20%;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 2px;
+}
+.table3 button {
+	border-radius: 50%;
+	background: #121212;
+	width: 28px;
+	height: 28px;
+	color: #bf6c16;
+	border: none;
+	justify-content: center;
+	margin: auto;
+	margin-inline: 1px;
+	align-items: center;
+	padding: 6px;
+	cursor: pointer;
+}
+
+.table3 button:active {
+	background: #fff;
+	color: #000;
+}
+
+.botonTables,
+.table2 .botonCerrarTable2,
+.table3 .botonCerrarTable3 {
+	display: none;
+}
+
+
+.table3 .borr {
+	background: none;
+	color: #ef4441;
+}
+
+.contein {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 10px;
+	width: 30%;
+}
+
+.templa,
+.noTempla {
+	display: none;
+	width: 260px;
+	height: auto;
+	border: solid 1px #000;
+}
+
+
+
+
+
+.none {
+	display: none;
+}
+
+
+.impDate {
+	font-family: Rye-Regular;
+	text-shadow: #000 -4px 0 8px;
+	display: block;
+	margin-top: 0px;
+}
+
+.impDate h2 {
+	margin: 0px;
+	padding: 0px;
+}
+
+nav a {
+	display: block;
+}
+
+.form-date {
+	width: 60%;
+	display: block;
+	background-color: #050606;
+	margin: auto;
+	justify-content: center;
+	margin-top: 70px;
+	padding: 5px;
+	border-radius: 15px;
+}
+
+.form-date h3 {
+	color: #bf6c16;
+	font-size: 50px;
+	display: block;
+	margin: auto;
+	justify-content: center;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+.form-date input {
+	display: block;
+	margin: auto;
+	margin-bottom: 5px;
+	align-items: center;
+	font-size: 16px;
+	justify-content: center;
+}
+
+.form-date h5 {
+	display: block;
+	font-size: 25px;
+	margin: auto;
+	text-align: center;
+	justify-content: center;
+}
+
+
+
+.iniciarSesion,
+.cerrarSesion {
+	border-radius: 5px;
+	border: none;
+	padding: 8px;
+	cursor: pointer;
+	color: #191919;
+}
+
+.iniciarSesion {
+	background-color: #689956;
+}
+
+.iniciarSesion:active {
+	background-color: #68e956;
+}
+
+
+
+
+.imprCuaderno,
+.cerrarSesion {
+	background-color: transparent;
+	display: inline-block;
+	margin: auto;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 8px;
+	transition: all .3s;
+	margin-left: 16px;
+}
+
+.imprCuaderno:hover,
+.cerrarSesion:hover {
+	transform: scale(1.1);
+	filter: drop-shadow(0 0 2px #fff);
+}
+
+.cerrarSesion {
+	border: solid 3px #fe0606;
+	color: #fe0606;
+}
+
+.imprCuaderno {
+	border: solid 3px #bf6c16;
+	color: #bf6c16;
+
+
+}
+
+.celdaClase {
+	display: none;
+}
+
+.eye {
+	height: 11px;
+	width: 23px;
+	background: none;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+}
+
+.eye :active {
+	color: #bf6c16;
+}
+
+.pceldaTotal {
+	display: inline;
+	font-size: 16px;
+	margin-right: 3px;
+}
+
+@media (max-width:1150px) {
+	h1 {
+		font-size: 35px;
+		display: block;
+	}
+
+	.Encabezado {
+		height: 140px;
+	}
+
+
+	h2 {
+		font-size: 20px;
+	}
+
+	.navegador {
+		width: 20%;
+	}
+
+	.divStock {
+		width: 60%;
+	}
+}
+
+@media (max-width:880px) {
+	.Encabezado {
+		height: 120px;
+	}
+
+	h1 {
+		display: block;
+		width: 90%;
+		font-size: 39px;
+	}
+
+	.navegador {
+		width: 30%;
+	}
+
+	.navegador a {
+		font-size: 18px;
+	}
+
+	.impDate h2 {
+		font-size: 15px;
+	}
+
+	.divStock {
+		width: 70%;
+	}
+
+	.divStock label {
+		font-size: 2px;
+		height: 63px;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		width: 22%;
+	}
+
+	.divStock label input {
+		margin: auto;
+		justify-content: center;
+		font-size: 20px;
+	}
+
+	.carrito1 {
+		float: none;
+		margin: auto;
+		display: block;
+		width: 95%;
+	}
+
+	.Contenedor {
+		display: flex;
+	}
+
+	.Contenedor a {
+		width: 200px;
+		height: 100px;
+	}
+
+	.elementos {
+		display: block;
+		width: 95%;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
+		margin-top: 9px;
+	}
+
+	.nav-items button {
+		height: 42px;
+		margin-bottom: 4px;
+		background-color: #7aa;
+	}
+
+	#pizzas .nav-items button {
+		width: 100%;
+		font-size: 22px;
+	}
+
+	.aggregations {
+		width: 48%;
+	}
+
+	.complementos {
+		width: 48%;
+	}
+
+	.aggregations .agregar {
+		/* position: fixed; */
+		float: right;
+	}
+
+	.celdatableOrder {
+		height: 41px;
+	}
+
+	.importeOutput,
+	.carrito .cliente {
+		height: 42px;
+	}
+
+
+	/*cuaderno*/
+	.navegadorCuaderno {
+		width: 50%;
+	}
+
+	.table1 {
+		display: block;
+		width: 100%;
+		height: 469px;
+		font-size: 12px;
+		margin: 1px;
+	}
+
+	.divBotones button {
+		display: block;
+		float: right;
+		position: static;
+	}
+
+
+
+	.table3,
+	.table2 {
+		display: none;
+		background-color: rgba(0, 0, 0, 0.93);
+	}
+
+	.table2 {
+		box-shadow: -0.5px 0.5px 8px 0.7px #bf6c16;
+	}
+
+	.table2 td {
+		box-shadow: none;
+		font-size: 13px;
+	}
+
+	.botonTables {
+		display: inline-flex;
+		text-align: center;
+		justify-content: center;
+		margin-left: 30px;
+		width: 16%;
+		height: 35px;
+		padding: 3px;
+	}
+
+	.botonCuaTable2,
+	.botonCuaTable3 {
+		background-color: #bf6c16;
+		border: none;
+		border-radius: 7px;
+		display: inline-block;
+		height: 30px;
+		color: #000;
+		width: 40%;
+		margin: auto;
+	}
+
+	.table2 .botonCerrarTable2,
+	.table3 .botonCerrarTable3 {
+		background-color: #a22;
+		color: #fff;
+		width: 33px;
+		height: 28px;
+		border: none;
+		border-radius: 5px;
+	}
+
+	.contein {
+		width: 50%;
+	}
+
+	.contAgreg {
+		margin-top: 10px;
+		display: block;
+		width: 100%;
+	}
+
+	.cerrarYCuaderno {
+		width: 40%;
+		display: inline-block;
+	}
+
+	.cerrarYCuaderno button {
+		height: 33px;
+		padding: 10px;
+	}
+
+	.sobreescribiendo {
+		font-size: 20px;
+		display: block;
+		width: 99%;
+		margin-bottom: 0px;
+	}
+
+	.sobreesP {
+		font-size: 13px;
+		margin-top: 1px;
+		display: inline-block;
+		text-align: left;
+		justify-content: center;
+	}
+
+	.Encabezado .cancelar {
+		margin-top: 3px;
+		display: inline-block;
+		text-align: center;
+		align-items: center;
+		vertical-align: top;
+	}
+}
+
+.yellow {
+	background: hsla(43, 100%, 51%, 0.427);
+}
+
+.red {
+	background-color: rgba(255, 46, 46, 0.397);
+}
+
+
+.cuadernoPDF {
+	background: #fff;
+	color: #000;
+}
+
+.logo {
+	filter: drop-shadow(0px 0px 4px #666);
+}
+
+.btn_a {
+	color: #bf6c16;
+	font-size: 18px;
+	outline: none;
+	border: none;
+}
+
+.add {
+	background: #bf6c16;
+	width: 90px;
+	border: none;
+	color: #fef;
+	height: 90px;
+}
+
+
+.headerSett{
+	width: 80%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	color: #fff;
+}
+.headerSett h1{
+	color: #fff;
+}
+.homeSett a{
+	text-decoration: none;
+	
+}
+.homeSett div{
+	display: flex;
+	justify-content: space-evenly;
+}
+.tableSett a{
+	text-decoration: none;
+}
+.tableSett form{
+	width: 50%;
+	border-radius: 20px;
+	display: flex;
+	text-align: left;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	border: 2px #666 solid;
+}
+.tableSett form table{
+	width: 95%;
+}
+.tableSett form th,.tableSett form td{
+padding: 8px;
+border-bottom: solid 1px #666;
+}
+.tableSett form button{
+	background-color: #bf6c16;
+	border-radius: 5px;
+	border: none;
+	padding: 8px;
+	cursor: pointer;
+	margin-block: 8px;
+	color: #fff;
+}
+.tableSett form input{
+	border: none;
+	border-radius: 20px;
+	font-size: 17px;
+	padding: 5px;
+	margin: auto;
+	text-align: center;
+}
+.tableSett .btn-group{
+	margin: auto;
+	width: 50%;
+	display: flex;
+	align-items: center;
+}
+.tableSett .btn-group h2{
+margin-left: 30px;
+}

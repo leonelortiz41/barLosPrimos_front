@@ -39,11 +39,8 @@ let sumapPapas = 0;
 let sumapPizzas = 0;
 let sumaPanSaPapas = 0;
 let sumaPanHamPapas = 0;
-let AgregadoPrecio=200;
 let milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, papasdb, platosdb, bebidasdb;
-let colorSan = "", colorHamb = "", colorPapas = "", colorPizzas = "", colorSaPapas = "", colorHamPapas = "";
-
-
+let colorSan = "#121212", colorHamb = "#121212", colorPapas = "#121212", colorPizzas = "#121212", colorSaPapas = "#121212", colorHamPapas = "#121212";
 
 let ldsring = document.querySelector(".lds-ring");
 const date = new Date().toLocaleDateString();
@@ -91,25 +88,25 @@ const recibirData = async (milanesasdb, lomitosdb, hamburguesasdb, pizzasdb, pap
 	});
 
 
-	if (stockSan > 0 && stockSan <= 10) colorSan = "yellow"
-	if (stockSan == 0) colorSan = "red"
+	if (stockSan > 0 && stockSan <= 10) colorSan = "#a97915"
+	if (stockSan == 0) colorSan = "#a92222"
 
-	if (stockHamb > 0 && stockHamb <= 10) colorHamb = "yellow"
-	if (stockHamb == 0) colorHamb = "red"
+	if (stockHamb > 0 && stockHamb <= 10) colorHamb = "#a97915"
+	if (stockHamb == 0) colorHamb = "#a92222"
 
-	if (stockPapas > 0 && stockPapas <= 10) colorPapas = "yellow"
-	if (stockPapas == 0) colorPapas = "red"
+	if (stockPapas > 0 && stockPapas <= 10) colorPapas = "#a97915"
+	if (stockPapas == 0) colorPapas = "#a92222"
 
-	if (stockPizzas > 0 && stockPizzas <= 10) colorPizzas = "yellow"
-	if (stockPizzas == 0) colorPizzas = "red"
+	if (stockPizzas > 0 && stockPizzas <= 10) colorPizzas = "#a97915"
+	if (stockPizzas == 0) colorPizzas = "#a92222"
 
-	if ((stockSan > 0 && stockSan <= 10) || stockPapas > 0 && stockPapas <= 10) colorSaPapas = "yellow"
-	if (stockSan == 0 || stockPapas == 0) colorSaPapas = "red";
+	if ((stockSan > 0 && stockSan <= 10) || stockPapas > 0 && stockPapas <= 10) colorSaPapas = "#a97915"
+	if (stockSan == 0 || stockPapas == 0) colorSaPapas = "#a92222";
 
-	if ((stockHamb > 0 && stockHamb <= 10) || stockPapas > 0 && stockPapas <= 10) colorHamPapas = "yellow"
-	if (stockHamb == 0 || stockPapas == 0) colorHamPapas = "red";
+	if ((stockHamb > 0 && stockHamb <= 10) || stockPapas > 0 && stockPapas <= 10) colorHamPapas = "#a97915"
+	if (stockHamb == 0 || stockPapas == 0) colorHamPapas = "#a92222";
 
-console.log(colorHamPapas)
+
 	let milanesasLS = localStorage.getItem("milanesasLS") || null;
 	let lomitosLS = localStorage.getItem("lomitosLS") || null;
 	let hamburguesasLS = localStorage.getItem("hamburguesasLS") || null;
@@ -445,44 +442,52 @@ console.log(colorHamPapas)
 		selectComida(0, platosdb[7].nombre, platosdb[7].precio, e.target.classList[1])
 	}).addClass(colorPapas)
 
+	$('#NapoP2').click((e) => {
+		selectComida(0, platosdb[7].nombre, platosdb[7].precio, e.target.classList[1])
+	}).css("background-color", colorPapas)
+
 	document.getElementById('EmpanadasCarne')
 		.addEventListener("click", () => { selectComida(0, "Empanada de carne", 600) });
 
 	document.getElementById('EmpanadasPollo')
 		.addEventListener("click", () => { selectComida(0, "Empanada de pollo", 600) });
 
-	document.getElementById('Pepsi2L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[0].nombre, bebidasdb[0].precio) });
+	$('#Pepsi2L').click((e) => {
+		selectComida(0, bebidasdb[0].nombre, bebidasdb[0].precio, e.target.classList[0])
+	})
 
-	document.getElementById('Gaseosa1.25L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[1].nombre, bebidasdb[1].precio) });
+	$('#Gaseosa125').click((e) => {
+		selectComida(0, bebidasdb[1].nombre, bebidasdb[1].precio, e.target.classList[0])
+	})
+	$('#Mirinda2L').click((e) => {
+		selectComida(0, bebidasdb[2].nombre, bebidasdb[2].precio, e.target.classList[0])
+	})
 
-	document.getElementById('Mirinda2L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[2].nombre, bebidasdb[2].precio) });
 
-	document.getElementById('Secco')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[3].nombre, bebidasdb[3].precio) });
-
-	document.getElementById('Coca15L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[4].nombre, bebidasdb[4].precio) });
-
-	document.getElementById('JugoFresh')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[5].nombre, bebidasdb[5].precio) });
-
-	document.getElementById('VasoGaseosa')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[6].nombre, bebidasdb[6].precio) });
-
-	document.getElementById('LataQuilmes')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[7].nombre, bebidasdb[7].precio) });
-
-	document.getElementById('Coca225L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[8].nombre, bebidasdb[8].precio) });
-
-	document.getElementById('Fanta15L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[9].nombre, bebidasdb[9].precio) });
-
-	document.getElementById('Fanta225L')
-		.addEventListener("click", () => { selectComida(0, bebidasdb[10].nombre, bebidasdb[10].precio) });
+	$('#GaseosaDelivery').click((e) => {
+		selectComida(0, bebidasdb[3].nombre, bebidasdb[3].precio, e.target.classList[0])
+	})
+	$('#Coca15L').click((e) => {
+		selectComida(0, bebidasdb[4].nombre, bebidasdb[4].precio, e.target.classList[0])
+	})
+	$('#JugoFresh').click((e) => {
+		selectComida(0, bebidasdb[5].nombre, bebidasdb[5].precio, e.target.classList[0])
+	})
+	$('#VasoGaseosa').click((e) => {
+		selectComida(0, bebidasdb[6].nombre, bebidasdb[6].precio, e.target.classList[0])
+	})
+	$('#LataQuilmes').click((e) => {
+		selectComida(0, bebidasdb[7].nombre, bebidasdb[7].precio, e.target.classList[0])
+	})
+	$('#Coca225L').click((e) => {
+		selectComida(0, bebidasdb[8].nombre, bebidasdb[8].precio, e.target.classList[0])
+	})
+	$('#Fanta15L').click((e) => {
+		selectComida(0, bebidasdb[9].nombre, bebidasdb[9].precio, e.target.classList[0])
+	})
+	$('#Fanta225L').click((e) => {
+		selectComida(0, bebidasdb[10].nombre, bebidasdb[10].precio, e.target.classList[0])
+	})
 
 
 	$(agregadoPapas).click(function () {
@@ -509,19 +514,19 @@ console.log(colorHamPapas)
 			pedidoActual.cantidad += 1
 			if (agregadoPapas.checked == true) {
 				hidden_nombre += `(+ ${papasCantidad.value} AGREGADO de PAPAS)`
-				hidden_precio += (AgregadoPrecio * papasCantidad.value);
+				hidden_precio += (200 * papasCantidad.value);
 			}
 			if (agregadoHuevo.checked == true) {
 				hidden_nombre += `(+ ${huevoCantidad.value} AGREGADO de HUEVO)`
-				hidden_precio += (AgregadoPrecio * huevoCantidad.value);
+				hidden_precio += (200 * huevoCantidad.value);
 			}
 			if (agregadoQueso.checked == true) {
 				hidden_nombre += `(+ AGREGADO de QUESO)`
-				hidden_precio += (AgregadoPrecio);
+				hidden_precio += (200);
 			}
 			if (agregadoJamon.checked == true) {
 				hidden_nombre += `(+ AGREGADO de JAMON)`
-				hidden_precio += (AgregadoPrecio);
+				hidden_precio += (200);
 			}
 
 			let aux = true;
